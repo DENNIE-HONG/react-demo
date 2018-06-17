@@ -4,7 +4,7 @@
 /node_modules
 
 package-lock.json
-
+/dist
 # misc
 .DS_Store
 .env.local
