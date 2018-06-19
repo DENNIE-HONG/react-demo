@@ -1,10 +1,11 @@
 import React from 'react';
 import ComponentHeader from './components/layout/header';
+
 class App extends React.Component {
-  render () { 
-    return ( 
+  render () {
+    return (
       <div>
-        <ComponentHeader keywords="react练习"/>
+        <ComponentHeader keywords="react练习" />
         hello
       </div>
     );

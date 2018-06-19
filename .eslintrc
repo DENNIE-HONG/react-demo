@@ -3,23 +3,33 @@
   "env": { 
     "browser": true,
     "node": true,
-    "es6": true 
+    "es6": true,
+    "mocha": true 
   },
-  "globals": {
-    "$": false
+  "settings": {
+    "react": {
+      "createClass": "createReactClass",                                        
+      "pragma": "React", 
+      "version": "15.0", 
+      "flowVersion": "0.53"
+    },
+    "propWrapperFunctions": [ "forbidExtraProps" ]
   },
   "extends": [
     "eslint:recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "airbnb"
   ],
   "parserOptions": {
+    "ecmaVersion": 6,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
     }
   },
   "plugins": [
-    "react"
+    "react",
+    "jsx-a11y"
   ],
   "rules": {
     "indent": [2, 2, {"SwitchCase": 1}],
@@ -37,6 +47,7 @@
     "space-unary-ops": [2, {"words": true, "nonwords": true, "overrides": {"!": false, ".": false}}],
     "key-spacing": [2, {"beforeColon": false, "afterColon": true, "mode": "strict"}],
     "jsx-quotes": [2, "prefer-double"],
-    "react/forbid-prop-types": [2, {"forbid": ["any"]}]
+    "react/jsx-filename-extension": 0,
+    "react/prefer-stateless-function": 0
   }
 }
