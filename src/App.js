@@ -1,12 +1,13 @@
 import React from 'react';
+import ComponentHeader from './components/layout/header';
 class App extends React.Component {
   render () { 
     return ( 
       <div>
-        色粉未结案覅文件而非
+        <ComponentHeader keywords="react练习"/>
+        hello
       </div>
     );
   }
 }
 export default App;
-

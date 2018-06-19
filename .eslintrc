@@ -35,6 +35,8 @@
     "space-before-function-paren": [2, "always"],
     "space-before-blocks": [2, "always"],
     "space-unary-ops": [2, {"words": true, "nonwords": true, "overrides": {"!": false, ".": false}}],
-    "key-spacing": [2, {"beforeColon": false, "afterColon": true, "mode": "strict"}]
+    "key-spacing": [2, {"beforeColon": false, "afterColon": true, "mode": "strict"}],
+    "jsx-quotes": [2, "prefer-double"],
+    "react/forbid-prop-types": [2, {"forbid": ["any"]}]
   }
 }
