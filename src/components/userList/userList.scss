@@ -1,0 +1,14 @@
+.user-list {
+  width: 200px;
+  border: 1px solid red;
+  li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  img {
+    width: 60px;
+    height: 60px;
+    margin-left: 20px;
+  }
+}

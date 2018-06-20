@@ -2,8 +2,15 @@ const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = (env) => {
-  let config = {
+  const config = {
     entry: path.resolve(__dirname, '../src/index.js'),
+    resolve: {
+      extensions: ['.js'],
+      alias: {
+        scss: path.resolve(__dirname, '../src/scss'),
+        coms: path.resolve(__dirname, '../src/components')
+      }
+    },
     optimization: {
       runtimeChunk: {
         name: 'manifest'
@@ -13,7 +20,7 @@ module.exports = (env) => {
       new CleanWebpackPlugin(['dist/*.*'], {
         root: path.resolve(__dirname, '../')
       }),
-      new HtmlWebpackPlugin({ 
+      new HtmlWebpackPlugin({
         template: path.resolve(__dirname, '../src/index.html'),
         filename: 'index.html',
         inject: 'body',
@@ -34,19 +41,31 @@ module.exports = (env) => {
           exclude: /node_modules/
         },
         {
-          test: /\.css$/,
+          test: /\.(css|scss)$/,
           use: [
             'style-loader',
             {
               loader: 'css-loader',
               options: {
-                sourceMap: env.production ? false: true
+                sourceMap: !env.production
+              }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: !env.production
+              }
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: !env.production
               }
             }
           ]
         }
       ]
     }
-  }; 
+  };
   return config;
 };

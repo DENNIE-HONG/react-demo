@@ -1,36 +1,13 @@
-{ 
+{
   "parser": "babel-eslint",
-  "env": { 
+  "env": {
     "browser": true,
     "node": true,
-    "es6": true,
-    "mocha": true 
+    "es6": true
   },
-  "settings": {
-    "react": {
-      "createClass": "createReactClass",                                        
-      "pragma": "React", 
-      "version": "15.0", 
-      "flowVersion": "0.53"
-    },
-    "propWrapperFunctions": [ "forbidExtraProps" ]
-  },
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "airbnb"
-  ],
   "parserOptions": {
-    "ecmaVersion": 6,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true
-    }
+    "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "jsx-a11y"
-  ],
   "rules": {
     "indent": [2, 2, {"SwitchCase": 1}],
     "semi": [2, "always"],
@@ -39,15 +16,13 @@
     "no-multiple-empty-lines": [ 2, {"max": 2}],
     "no-unused-vars": [1, {"vars": "all", "args": "after-used"}],
     "no-spaced-func": 2,
+    "no-trailing-spaces": 1,
     "no-dupe-keys": 2,
     "no-redeclare": 2,
     "object-curly-spacing": [2, "always"],
     "space-before-function-paren": [2, "always"],
     "space-before-blocks": [2, "always"],
     "space-unary-ops": [2, {"words": true, "nonwords": true, "overrides": {"!": false, ".": false}}],
-    "key-spacing": [2, {"beforeColon": false, "afterColon": true, "mode": "strict"}],
-    "jsx-quotes": [2, "prefer-double"],
-    "react/jsx-filename-extension": 0,
-    "react/prefer-stateless-function": 0
+    "key-spacing": [2, {"beforeColon": false, "afterColon": true, "mode": "strict"}]
   }
 }
