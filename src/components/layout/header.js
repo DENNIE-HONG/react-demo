@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
-
+require('scss/main.scss');
 class ComponentHeader extends React.Component {
   render () {
     return (
@@ -21,6 +21,6 @@ class ComponentHeader extends React.Component {
 }
 
 ComponentHeader.propTypes = {
-  keywords: PropTypes.string.isRequired,
+  keywords: PropTypes.string.isRequired
 };
 export default ComponentHeader;
