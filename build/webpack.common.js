@@ -1,9 +1,12 @@
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const config = require('../config');
+const commonConfig = config.common;
+
 module.exports = (env) => {
   const config = {
-    entry: path.resolve(__dirname, '../src/index.js'),
+    entry: commonConfig.entry,
     resolve: {
       extensions: ['.js'],
       alias: {
@@ -17,8 +20,8 @@ module.exports = (env) => {
       }
     },
     plugins: [
-      new CleanWebpackPlugin(['dist/*.*'], {
-        root: path.resolve(__dirname, '../')
+      new CleanWebpackPlugin([`${commonConfig.assetsDirectory}/`], {
+        root: commonConfig.projectRoot
       }),
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, '../src/index.html'),
@@ -33,7 +36,7 @@ module.exports = (env) => {
       rules: [
         {
           test: /\.(js|jsx)$/,
-          include: path.resolve(__dirname, '../src'),
+          include: commonConfig.sourceCode,
           use: [
             'babel-loader',
             'eslint-loader'

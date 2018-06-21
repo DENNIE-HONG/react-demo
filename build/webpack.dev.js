@@ -1,7 +1,8 @@
 const common = require('./webpack.common');
 const merge = require('webpack-merge');
-const path = require('path');
 const webpack = require('webpack');
+const config = require('../config');
+const devConfig = config.development;
 module.exports = (env) => {
   env.production = env.production !== 'false';
   return merge(common(env), {
@@ -9,19 +10,27 @@ module.exports = (env) => {
     devtool: 'inline-source-map',
     output: {
       filename: 'bundle.js',
-      path: path.resolve(__dirname, '../dist'),
-      publicPath: '/',
+      path: devConfig.assetsDirectory,
+      publicPath: devConfig.assetsPublicPath
     },
     devServer: {
-      contentBase: path.resolve(__dirname, '../src'),
+      contentBase: devConfig.assetsViews,
       watchContentBase: true,
-      port: 7777,
+      port: devConfig.port,
       compress: true,
       hot: true,
-      publicPath: '/',
+      publicPath: devConfig.assetsPublicPath,
       overlay: true,
       stats: {
-        colors: true
+        colors: true,
+        modules: false,
+        chunks: false
+      },
+      watchOptions: {
+        ignored: /node_modules/
+      },
+      proxy: {
+        '*': 'https://www.jianshu.com'
       }
     },
     plugins: [

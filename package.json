@@ -20,6 +20,7 @@
   "homepage": "https://github.com/DENNIE-HONG/react-demo#readme",
   "dependencies": {
     "@types/prop-types": "^15.5.3",
+    "axios": "^0.18.0",
     "prop-types": "^15.6.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
