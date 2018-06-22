@@ -22,6 +22,8 @@ module.exports = (env) => {
       publicPath: devConfig.assetsPublicPath,
       overlay: true,
       stats: {
+        warnings: true,
+        errors: true,
         colors: true,
         modules: false,
         chunks: false
@@ -30,7 +32,11 @@ module.exports = (env) => {
         ignored: /node_modules/
       },
       proxy: {
-        '*': 'https://www.jianshu.com'
+        '/api': {
+          target: 'https://www.jianshu.com',
+          changeOrigin: true,
+          pathRewrite: { '^/api': '' }
+        }
       }
     },
     plugins: [

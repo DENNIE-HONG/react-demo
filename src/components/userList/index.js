@@ -3,9 +3,17 @@ import { getUserList } from '../../api';
 require('./userList.scss');
 
 class UserList extends React.Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      userList: []
+    };
+  }
   componentDidMount () {
     getUserList().then((res) => {
-      console.log(res);
+      this.setState({
+        userList: res.data.collections
+      });
     }).catch((err) => {
       console.log(err);
     });
@@ -13,10 +21,13 @@ class UserList extends React.Component {
   render () {
     return (
       <div className="user-list">
-        <li>
-          <div className="name">名字</div>
-          <img src="https://graph.facebook.com/10208663700870498/picture?type=large" className="img-circle" />
-        </li>
+        {this.state.userList.map((user) =>
+          (
+            <li key={user.id}>
+              <div className="name">{user.owner_name}</div>
+              <img src={user.avatar} className="img-circle" />
+            </li>
+          ))}
       </div>
     );
   }
