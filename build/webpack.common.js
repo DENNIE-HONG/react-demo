@@ -20,7 +20,10 @@ module.exports = (env) => {
       }
     },
     plugins: [
-      new CleanWebpackPlugin([`${commonConfig.assetsDirectory}/`], {
+      new CleanWebpackPlugin([
+        `${commonConfig.assetsDirectory}/`,
+        `${commonConfig.assetsDirectory}/js/`
+      ], {
         root: commonConfig.projectRoot
       }),
       new HtmlWebpackPlugin({
@@ -63,6 +66,24 @@ module.exports = (env) => {
               loader: 'sass-loader',
               options: {
                 sourceMap: !env.production
+              }
+            },
+            {
+              loader: 'sass-resources-loader',
+              options: {
+                resources: [path.resolve(__dirname, '../src/scss/vars.scss'), path.resolve(__dirname, '../src/scss/mixins.scss')]
+              }
+            }
+          ]
+        },
+        {
+          test: /\.(png|svg|jpg|gif)$/,
+          use: [
+            {
+              loader: 'url-loader',
+              options: {
+                limit: 8192,
+                name: env.production ? 'img/[name].[hash:7].[ext]' : 'img/[name].[ext]'
               }
             }
           ]

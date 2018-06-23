@@ -9,7 +9,7 @@ module.exports = (env) => {
     mode: 'development',
     devtool: 'inline-source-map',
     output: {
-      filename: 'bundle.js',
+      filename: 'js/bundle.js',
       path: devConfig.assetsDirectory,
       publicPath: devConfig.assetsPublicPath
     },
@@ -37,7 +37,8 @@ module.exports = (env) => {
           changeOrigin: true,
           pathRewrite: { '^/api': '' }
         }
-      }
+      },
+      historyApiFallback: true
     },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
