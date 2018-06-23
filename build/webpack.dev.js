@@ -1,6 +1,7 @@
 const common = require('./webpack.common');
 const merge = require('webpack-merge');
 const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const config = require('../config');
 const devConfig = config.development;
 module.exports = (env) => {
@@ -9,7 +10,7 @@ module.exports = (env) => {
     mode: 'development',
     devtool: 'inline-source-map',
     output: {
-      filename: 'js/bundle.js',
+      filename: 'js/[name].js',
       path: devConfig.assetsDirectory,
       publicPath: devConfig.assetsPublicPath
     },
@@ -42,6 +43,9 @@ module.exports = (env) => {
     },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
+      new MiniCssExtractPlugin({
+        filename: 'css/[name].css'
+      })
     ],
     watch: true
   });

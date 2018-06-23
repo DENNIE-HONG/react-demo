@@ -1,6 +1,7 @@
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const config = require('../config');
 const commonConfig = config.common;
 
@@ -22,7 +23,8 @@ module.exports = (env) => {
     plugins: [
       new CleanWebpackPlugin([
         `${commonConfig.assetsDirectory}/`,
-        `${commonConfig.assetsDirectory}/js/`
+        `${commonConfig.assetsDirectory}/js/`,
+        `${commonConfig.assetsDirectory}/css/`
       ], {
         root: commonConfig.projectRoot
       }),
@@ -49,7 +51,7 @@ module.exports = (env) => {
         {
           test: /\.(css|scss)$/,
           use: [
-            'style-loader',
+            MiniCssExtractPlugin.loader,
             {
               loader: 'css-loader',
               options: {

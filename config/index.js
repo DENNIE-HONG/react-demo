@@ -4,7 +4,9 @@ const resolve = (dir) => {
 };
 module.exports = {
   common: {
-    entry: resolve('src/index.js'),
+    entry: {
+      main: resolve('src/index.js')
+    },
     sourceCode: resolve('src'), // 源码目录路径
     assetsDirectory: resolve('dist'),
     projectRoot: resolve('/')
