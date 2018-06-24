@@ -1,0 +1,20 @@
+form {
+  margin-top: 30px;
+  text-align: center;
+}
+h1 {
+  font-size: nth($fz, 4);
+}
+label {
+  display: block;
+  margin-top: 15px;
+  margin-left: 20px;
+  font-size: nth($fz, 2);
+}
+input {
+  height: 30px;
+  padding: 0 15px;
+}
+.btn-primary {
+  margin-top: 10px;
+}

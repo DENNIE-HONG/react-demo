@@ -11,7 +11,8 @@ module.exports = (env) => {
       extensions: ['.js'],
       alias: {
         assets: path.resolve(__dirname, '../src/assets'),
-        coms: path.resolve(__dirname, '../src/components')
+        coms: path.resolve(__dirname, '../src/components'),
+        api: path.resolve(__dirname, '../src/api')
       }
     },
     optimization: {
