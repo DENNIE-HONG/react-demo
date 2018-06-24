@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
-require('scss/main.scss');
+require('assets/main.scss');
 class ComponentHeader extends React.Component {
   render () {
     return (

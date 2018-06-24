@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as HashRouter, Route, Switch } from 'react-router-dom';
-import Home from './containers/home';
-import NotFound from './containers/404';
+import Home from './views/home';
+import NotFound from './views/404';
 class RouteMap extends React.Component {
   render () {
     return (

@@ -2,16 +2,15 @@ const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const config = require('../config');
-const commonConfig = config.common;
+const WEBPACK_COMMON_CONFIG = require('../config').WEBPACK_COMMON_CONFIG;
 
 module.exports = (env) => {
   const config = {
-    entry: commonConfig.entry,
+    entry: WEBPACK_COMMON_CONFIG.entry,
     resolve: {
       extensions: ['.js'],
       alias: {
-        scss: path.resolve(__dirname, '../src/scss'),
+        assets: path.resolve(__dirname, '../src/assets'),
         coms: path.resolve(__dirname, '../src/components')
       }
     },
@@ -22,11 +21,12 @@ module.exports = (env) => {
     },
     plugins: [
       new CleanWebpackPlugin([
-        `${commonConfig.assetsDirectory}/`,
-        `${commonConfig.assetsDirectory}/js/`,
-        `${commonConfig.assetsDirectory}/css/`
+        `${WEBPACK_COMMON_CONFIG.assetsDirectory}/`,
+        `${WEBPACK_COMMON_CONFIG.assetsDirectory}/js/`,
+        `${WEBPACK_COMMON_CONFIG.assetsDirectory}/css/`,
+        `${WEBPACK_COMMON_CONFIG.assetsDirectory}/img/`
       ], {
-        root: commonConfig.projectRoot
+        root: WEBPACK_COMMON_CONFIG.projectRoot
       }),
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, '../src/index.html'),
@@ -41,7 +41,7 @@ module.exports = (env) => {
       rules: [
         {
           test: /\.(js|jsx)$/,
-          include: commonConfig.sourceCode,
+          include: WEBPACK_COMMON_CONFIG.sourceCode,
           use: [
             'babel-loader',
             'eslint-loader'
@@ -73,7 +73,7 @@ module.exports = (env) => {
             {
               loader: 'sass-resources-loader',
               options: {
-                resources: [path.resolve(__dirname, '../src/scss/vars.scss'), path.resolve(__dirname, '../src/scss/mixins.scss')]
+                resources: [path.resolve(__dirname, '../src/assets/vars.scss'), path.resolve(__dirname, '../src/assets/mixins.scss')]
               }
             }
           ]
@@ -86,6 +86,18 @@ module.exports = (env) => {
               options: {
                 limit: 8192,
                 name: env.production ? 'img/[name].[hash:7].[ext]' : 'img/[name].[ext]'
+              }
+            }
+          ]
+        },
+        {
+          test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
+          use: [
+            {
+              loader: 'url-loader',
+              options: {
+                limit: 2048,
+                name: env.production ? 'fonts/[name].[hash:7].[ext]' : 'fonts/[name].[ext]'
               }
             }
           ]

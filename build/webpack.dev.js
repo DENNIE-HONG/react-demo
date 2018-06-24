@@ -2,8 +2,7 @@ const common = require('./webpack.common');
 const merge = require('webpack-merge');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const config = require('../config');
-const devConfig = config.development;
+const WEBPACK_DEV_CONFIG = require('../config').WEBPACK_DEV_CONFIG;
 module.exports = (env) => {
   env.production = env.production !== 'false';
   return merge(common(env), {
@@ -11,16 +10,16 @@ module.exports = (env) => {
     devtool: 'inline-source-map',
     output: {
       filename: 'js/[name].js',
-      path: devConfig.assetsDirectory,
-      publicPath: devConfig.assetsPublicPath
+      path: WEBPACK_DEV_CONFIG.assetsDirectory,
+      publicPath: WEBPACK_DEV_CONFIG.assetsPublicPath
     },
     devServer: {
-      contentBase: devConfig.assetsViews,
+      contentBase: WEBPACK_DEV_CONFIG.assetsViews,
       watchContentBase: true,
-      port: devConfig.port,
+      port: WEBPACK_DEV_CONFIG.port,
       compress: true,
       hot: true,
-      publicPath: devConfig.assetsPublicPath,
+      publicPath: WEBPACK_DEV_CONFIG.assetsPublicPath,
       overlay: true,
       stats: {
         warnings: true,
