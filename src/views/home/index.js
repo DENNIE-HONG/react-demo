@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ComponentHeader from 'coms/layout/header';
 import UserList from 'coms/userList';
 import './home.scss';
-class Home extends React.Component {
+class Home extends Component {
+  isLogin () {
+    if (!this.state.name) {
+      this.props.history.push('/login', null);
+    }
+  }
   render () {
     return (
       <div>
