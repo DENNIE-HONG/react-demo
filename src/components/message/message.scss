@@ -1,0 +1,30 @@
+.message {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  width: 400px;
+  margin-left: -200px;
+  font-size: nth($fz, 2);
+  z-index: 1000;
+  .info,
+  .warning,
+  .error {
+    padding: 10px 20px;
+    border-radius: 6px;
+  }
+  .info {
+    color: gray;
+    background-color: nth($fgray, 2);
+    border: 1px solid #666;
+  }
+  .warning {
+    color: orange;
+    background-color: $fyellow;
+    border: 1px solid orange;
+  }
+  .error {
+    color: red;
+    background-color: pink;
+    border: 1px solid red;
+  }
+}

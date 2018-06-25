@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import ComponentHeader from 'coms/layout/header';
 import UserList from 'coms/userList';
+import isLogin from 'utils/islogin';
 import './home.scss';
 class Home extends Component {
+  constructor (props) {
+    super(props);
+    this.isLogin();
+  }
   isLogin () {
-    if (!this.state.name) {
+    if (!isLogin()) {
       this.props.history.push('/login', null);
     }
   }

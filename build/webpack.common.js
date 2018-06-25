@@ -12,7 +12,8 @@ module.exports = (env) => {
       alias: {
         assets: path.resolve(__dirname, '../src/assets'),
         coms: path.resolve(__dirname, '../src/components'),
-        api: path.resolve(__dirname, '../src/api')
+        api: path.resolve(__dirname, '../src/api'),
+        utils: path.resolve(__dirname, '../src/utils')
       }
     },
     optimization: {
@@ -32,10 +33,11 @@ module.exports = (env) => {
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, '../src/index.html'),
         filename: 'index.html',
-        inject: 'body',
+        inject: true,
         minify: false,
         xhtml: true,
-        cache: false
+        cache: false,
+        favicon: path.resolve(__dirname, '../favicon.ico')
       })
     ],
     module: {
