@@ -8,9 +8,13 @@
   z-index: 1000;
   .info,
   .warning,
-  .error {
+  .error,
+  .success {
     padding: 10px 20px;
     border-radius: 6px;
+    > .iconfont {
+      padding-right: 5px;
+    }
   }
   .info {
     color: gray;
@@ -26,5 +30,10 @@
     color: red;
     background-color: pink;
     border: 1px solid red;
+  }
+  .success {
+    color: green;
+    background-color: aquamarine;
+    border: 1px solid green;
   }
 }

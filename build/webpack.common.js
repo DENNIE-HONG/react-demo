@@ -26,7 +26,8 @@ module.exports = (env) => {
         `${WEBPACK_COMMON_CONFIG.assetsDirectory}/`,
         `${WEBPACK_COMMON_CONFIG.assetsDirectory}/js/`,
         `${WEBPACK_COMMON_CONFIG.assetsDirectory}/css/`,
-        `${WEBPACK_COMMON_CONFIG.assetsDirectory}/img/`
+        `${WEBPACK_COMMON_CONFIG.assetsDirectory}/img/`,
+        `${WEBPACK_COMMON_CONFIG.assetsDirectory}/fonts`
       ], {
         root: WEBPACK_COMMON_CONFIG.projectRoot
       }),
