@@ -3,6 +3,7 @@ import ComponentHeader from 'coms/layout/header';
 import { postLogin } from 'api';
 import isLogin from 'utils/islogin';
 import Message from 'coms/message';
+import Input from 'coms/input';
 import './login.scss';
 class Login extends Component {
   constructor (props) {
@@ -26,11 +27,13 @@ class Login extends Component {
       name: this.state.name,
       password: this.state.password
     };
-    postLogin(sendData).then(() => {
-      this.props.history.push('/', null);
-    }).catch((err) => {
-      this.resetErrorMesage(err);
-    });
+    console.log(sendData);
+
+    // postLogin(sendData).then(() => {
+    //   this.props.history.push('/', null);
+    // }).catch((err) => {
+    //   this.resetErrorMesage(err);
+    // });
   }
   handleNameChange (event) {
     this.setState({ name: event.target.value });
@@ -50,7 +53,7 @@ class Login extends Component {
           <h1>测试登录</h1>
           <label>
             账号：
-            <input name="name" type="text" placeholder="请输入账号" maxLength="20" value={this.state.name} onChange={this.handleNameChange} />
+            <Input placeholder="请输入账号" maxLength="20" value={this.state.name} />
           </label>
           <label>
             密码：

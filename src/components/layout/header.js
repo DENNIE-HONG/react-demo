@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 require('assets/main.scss');
-class ComponentHeader extends React.Component {
+class ComponentHeader extends Component {
   render () {
     return (
       <div className="application">
@@ -13,7 +13,7 @@ class ComponentHeader extends React.Component {
           <meta name="keywords" content={this.props.keywords} />
           <meta name="description" content={this.props.keywords} />
           <meta name="renderer" content="webkit|ie-comp|ie-stand" />
-          <title>My Title</title>
+          <title>My React</title>
         </Helmet>
       </div>
     );
