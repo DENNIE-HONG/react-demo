@@ -1,12 +1,8 @@
 /**
  * 消息弹窗
- * @param {Object}  option
+ * @param {String}  type    默认是info
+ * @param {String}  message 必须，提示文本
  * @author luyanhong
- * @example
- * showMessage({
- *    type: 'error',
- *    message: '错了'
- * });
 */
 import React, { Component } from 'react';
 import ReactDOM, { render } from 'react-dom';
@@ -15,8 +11,8 @@ class Message extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      type: props.type,
-      message: props.message
+      type: props.type || 'info',
+      message: props.message || ''
     };
     this.remove();
   }
@@ -52,6 +48,11 @@ class Message extends Component {
 /**
  * 消息提示对外接口
  * @param {Object} option  包括type和message
+ * @example
+ * showMessage({
+ *    type: 'error',
+ *    message: '错了'
+ * });
 */
 function showMessage (option) {
   const root = document.createElement('div');
