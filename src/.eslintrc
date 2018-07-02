@@ -90,6 +90,8 @@
     "react/no-deprecated": 1,
     "react/jsx-equals-spacing": 2,
     "react/jsx-no-bind": 0,
+    "react/no-unused-state": 1,
+    "react/no-array-index-key": 0,
     "require-yield": 0
   }
 }

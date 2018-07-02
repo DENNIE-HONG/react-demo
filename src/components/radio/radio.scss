@@ -1,0 +1,14 @@
+.com-radio {
+  display: inline-block;
+  font-size: nth($fz, 2);
+  &-original {
+    + span {
+      margin-left: 10px;
+    }
+    &:checked {
+      + span {
+        color: $fblue;
+      }
+    }
+  }
+}

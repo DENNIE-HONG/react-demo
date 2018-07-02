@@ -4,30 +4,42 @@ import { postLogin } from 'api';
 import isLogin from 'utils/islogin';
 import showMessage from 'coms/message';
 import Input from 'coms/input';
+import Radio from 'coms/radio';
+import RadioGroup from 'coms/radio/radio-group';
 import './login.scss';
 class Login extends Component {
   constructor (props) {
     super(props);
     this.state = {
       name: isLogin() || '',
-      password: ''
+      password: '',
+      gender: 'man'
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.handleGender = this.handleGender.bind(this);
   }
   handleSubmit () {
     const sendData = {
       name: this.state.name,
-      password: this.state.password
+      password: this.state.password,
+      gender: this.state.gender
     };
-    postLogin(sendData).then(() => {
-      this.props.history.push('/', null);
-    }).catch((err) => {
-      showMessage({
-        type: 'error',
-        message: err
-      });
+    console.log(sendData);
+
+    // postLogin(sendData).then(() => {
+    //   this.props.history.push('/', null);
+    // }).catch((err) => {
+    //   showMessage({
+    //     type: 'error',
+    //     message: err
+    //   });
+    // });
+  }
+  handleGender (newValue) {
+    this.setState({
+      gender: newValue
     });
   }
   handleNameChange (newValue) {
@@ -36,6 +48,7 @@ class Login extends Component {
   handlePasswordChange (newValue) {
     this.setState({ password: newValue });
   }
+
   render () {
     return (
       <div>
@@ -50,6 +63,10 @@ class Login extends Component {
             密码：
             <Input placeholder="请输入密码" maxLength="20" onChange={this.handlePasswordChange} value={this.state.password} />
           </label>
+          <RadioGroup onChange={this.handleGender} value={this.state.gender}>
+            <Radio value="femate" >女</Radio>
+            <Radio value="man" >男</Radio>
+          </RadioGroup>
           <div className="btn-primary" onClick={this.handleSubmit}>确定</div>
         </form>
       </div>
