@@ -11,21 +11,30 @@ class FeedList extends Component {
     this.state = {
       isLoading: true,
       afterId: 13,
-      feedList: []
+      feedList: [],
+      isEnd: false,
+      pageSize: 7
     };
   }
   componentDidMount () {
     getFeedList(this.state.afterId).then((res) => {
       this.setState({
         feedList: res.data.data,
-        isLoading: false
+        isLoading: false,
+        isEnd: (res.data.data.length < this.state.pageSize)
       });
     }).catch((err) => {
       console.log(err);
     });
   }
   render () {
-    const { isLoading, feedList } = this.state;
+    const { isLoading, feedList, isEnd } = this.state;
+    let loadmore = null;
+    if (!isEnd) {
+      loadmore = (
+        <div className="loadmore">点击加载更多</div>
+      );
+    }
     return (
       <div>
         {isLoading ? <Loading /> :
@@ -40,6 +49,7 @@ class FeedList extends Component {
                     </dd>
                   ))}
               </dl>
+              {loadmore}
             </section>
           )
         }
