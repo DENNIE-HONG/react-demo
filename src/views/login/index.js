@@ -26,16 +26,14 @@ class Login extends Component {
       password: this.state.password,
       gender: this.state.gender
     };
-    console.log(sendData);
-
-    // postLogin(sendData).then(() => {
-    //   this.props.history.push('/', null);
-    // }).catch((err) => {
-    //   showMessage({
-    //     type: 'error',
-    //     message: err
-    //   });
-    // });
+    postLogin(sendData).then(() => {
+      this.props.history.push('/', null);
+    }).catch((err) => {
+      showMessage({
+        type: 'error',
+        message: err
+      });
+    });
   }
   handleGender (newValue) {
     this.setState({

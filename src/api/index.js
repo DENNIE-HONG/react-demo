@@ -19,3 +19,16 @@ export function postLogin (params) {
     }
   });
 }
+export function getFeedList (afterId) {
+  return request({
+    method: 'get',
+    url: '/zhihu/api/v3/feed/topstory',
+    params: {
+      action_feed: true,
+      limit: 7,
+      action: 'down',
+      desktop: true,
+      after_id: afterId
+    }
+  });
+}

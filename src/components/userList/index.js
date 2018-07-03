@@ -1,5 +1,5 @@
 import React from 'react';
-import { getUserList } from '../../api';
+import { getUserList } from 'api';
 require('./userList.scss');
 
 class UserList extends React.Component {

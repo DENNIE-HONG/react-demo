@@ -36,6 +36,11 @@ module.exports = (env) => {
           target: 'https://www.jianshu.com',
           changeOrigin: true,
           pathRewrite: { '^/api': '' }
+        },
+        '/zhihu': {
+          target: 'https://www.zhihu.com',
+          changeOrigin: true,
+          pathRewrite: { '^/zhihu': '' }
         }
       },
       historyApiFallback: true

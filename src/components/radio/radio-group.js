@@ -20,7 +20,6 @@ class RadioGroup extends Component {
   }
   render () {
     let { children } = this.props;
-    // console.log(children);
     children = children.map((item, index) => {
       const name = item.props.name || this.state.name;
       return (

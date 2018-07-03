@@ -1,3 +1,12 @@
+body {
+  min-height: 100%;
+  background-color: nth($fgray, 3);
+}
+.home {
+  width: 1000px;
+  margin: auto;
+  overflow: hidden;
+}
 .container-left {
   float: left;
   width: 600px;

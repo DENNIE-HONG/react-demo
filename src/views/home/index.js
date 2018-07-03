@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ComponentHeader from 'coms/layout/header';
 import UserList from 'coms/userList';
 import isLogin from 'utils/islogin';
+import FeedList from 'coms/feedList';
 import './home.scss';
 class Home extends Component {
   constructor (props) {
@@ -15,7 +16,7 @@ class Home extends Component {
   }
   render () {
     return (
-      <div>
+      <div className="home">
         <ComponentHeader keywords="react练习" />
         <div className="container-left">
           <h1>测试</h1>
@@ -29,6 +30,7 @@ class Home extends Component {
               <span>登录页</span>
             </a>
           </div>
+          <FeedList />
         </div>
         <div className="container-right">
           <UserList />
