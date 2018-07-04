@@ -1,0 +1,31 @@
+.loadmore {
+  height: 40px;
+  line-height: 40px;
+  background-color: white;
+  text-align: center;
+  font-size: nth($fz, 2);
+  color: $fblue;
+  border-radius: 10px;
+  &-loading,
+  &-end {
+    display: none;
+  }
+  &.active {
+    &-txt,
+    &-end {
+      display: none;
+    }
+    &-loading {
+      display: block;
+    }
+  }
+  &.end {
+    &-txt,
+    &-loading {
+      display: none;
+    }
+    &-end {
+      display: inline;
+    }
+  }
+}

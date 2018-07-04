@@ -7,7 +7,7 @@ class Footer extends Component {
       <footer>
         <div className="footer-cont"></div>
         <div className="footer-bottom">
-          <small>@{year} Made with luyanhong</small>
+          <small>@{year} Made with <i className="iconfont icon-yonghu-xianxing"></i>luyanhong</small>
         </div>
       </footer>
     );

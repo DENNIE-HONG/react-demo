@@ -4,6 +4,9 @@
 * @param {String}   name      默认'', 互斥radio的name需要相同
 * @param {Boolean}  checked
 * @param {function} onChange  父组件定义此函数回调获取新数据
+* @author luyanhong
+* @example
+* <Radio value="1" onChange={function}>xxx</Radio>
 */
 import React, { Component } from 'react';
 import './radio.scss';

@@ -1,7 +1,16 @@
 footer {
   padding: 30px 0;
-  margin-top: 50px;
+  margin-top: 150px;
   color: white;
   text-align: center;
   background-color: black;
+  .footer-bottom {
+    small {
+      .iconfont {
+        margin-right: 5px;
+        color: red;
+        font-size: nth($fz, 4);
+      }
+    }
+  }
 }

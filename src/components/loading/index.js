@@ -1,3 +1,9 @@
+/**
+ * 首屏正在加载中动画
+ * @author luyanhong
+ * @example
+ * <Loading />
+*/
 import React, { Component } from 'react';
 import './loading.scss';
 class Loading extends Component {
