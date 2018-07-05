@@ -5,6 +5,7 @@
 import React, { Component } from 'react';
 import { getFeedList } from 'api';
 import Loading from 'coms/loading';
+import Loadmore from 'coms/loadmore';
 import './feedList.scss';
 class FeedList extends Component {
   constructor () {
@@ -14,8 +15,9 @@ class FeedList extends Component {
       afterId: 0,
       feedList: [],
       isEnd: false,
-      pageSize: 3
+      pageSize: 5
     };
+    this.fetchData = this.fetchData.bind(this);
   }
   componentDidMount () {
     this.fetchData();
@@ -35,24 +37,30 @@ class FeedList extends Component {
     );
   }
   fetchData () {
-    getFeedList(this.state.afterId).then((res) => {
-      this.setState({
-        feedList: this.state.feedList.concat(res.data.data),
-        isLoading: false,
-        isEnd: (res.data.data.length < this.state.pageSize),
-        afterId: (this.state.afterId + res.data.data.length)
+    return new Promise((resolve, reject) => {
+      getFeedList(this.state.afterId).then((res) => {
+        const isEnd = (res.data.data.length < this.state.pageSize);
+        this.setState({
+          feedList: this.state.feedList.concat(res.data.data),
+          isLoading: false,
+          isEnd: isEnd,
+          afterId: (this.state.afterId + res.data.data.length)
+        });
+        if (isEnd) {
+          resolve('end');
+        }
+        resolve('');
+      }).catch((err) => {
+        reject(err);
       });
-    }).catch((err) => {
-      console.log(err);
     });
   }
-
   render () {
     const { isLoading, feedList, isEnd } = this.state;
     let loadmore = null;
-    if (!isEnd) {
+    if (!isLoading && !isEnd) {
       loadmore = (
-        <div className="loadmore" onClick={this.fetchData.bind(this)}>点击加载更多</div>
+        <Loadmore onClick={this.fetchData} />
       );
     }
     const children = this.getFeedli(feedList);

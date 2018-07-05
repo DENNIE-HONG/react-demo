@@ -7,24 +7,56 @@
   color: $fblue;
   border-radius: 10px;
   &-loading,
-  &-end {
+  &-end,
+  &-fail {
     display: none;
   }
   &.active {
-    &-txt,
-    &-end {
+    .loadmore-txt,
+    .loadmore-end,
+    .loadmore-fail {
       display: none;
     }
-    &-loading {
+    .loadmore-loading {
       display: block;
     }
   }
   &.end {
-    &-txt,
-    &-loading {
+    background-color: transparent;
+    &:after {
+      position: relative;
+      top: -38px;
+      left: 0;
+      display: block;
+      width: 60%;
+      height: 1px;
+      margin: 0 auto;
+      background-color: $fblue;
+      content: '';
+    }
+    .loadmore-txt,
+    .loadmore-loading,
+    .loadmore-fail {
       display: none;
     }
-    &-end {
+    .loadmore-end {
+      display: block;
+      > span {
+        position: relative;
+        display: inline-block;
+        width: 20%;
+        z-index: 1;
+        background-color: nth($fgray, 3);
+      }
+    }
+  }
+  &.fail {
+    .loadmore-txt,
+    .loadmore-loading,
+    .loadmore-edn {
+      display: none;
+    }
+    .loadmore-fail {
       display: inline;
     }
   }
