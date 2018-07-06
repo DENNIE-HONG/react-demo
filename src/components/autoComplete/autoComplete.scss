@@ -1,0 +1,25 @@
+.com-autocomplete {
+  .input-box {
+    display: flex;
+    width: 250px;
+    padding: 12px 15px;
+    background-color: white;
+    box-sizing: border-box;
+    border: 1px solid nth($fgray, 1);
+    border-radius: 4px;
+    input {
+      flex: 1;
+      font-size: nth($fz, 2);
+      line-height: 16px;
+      border: 0;
+    }
+    .iconfont {
+      padding-left: 10px;
+      font-size: nth($fz, 5);
+      color: nth($fblack, 3);
+    }
+    &:hover {
+      border-color: $fblue;
+    }
+  }
+}
