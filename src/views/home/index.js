@@ -17,9 +17,9 @@ class Home extends Component {
   }
   render () {
     return (
-      <div>
+      <div className="home">
         <ComponentHeader keywords="react练习" />
-        <div className="home">
+        <div className="content">
           <div className="container-left">
             <h1>测试</h1>
             <div className="tag-list">

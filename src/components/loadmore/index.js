@@ -60,7 +60,6 @@ class Loadmore extends Component {
         <span className="loadmore-loading">拼命加载中...</span>
         <div className="loadmore-end">
           <span>我是有底线的</span>
-          <hr></hr>
         </div>
         <span className="loadmore-fail">加载失败</span>
       </div>

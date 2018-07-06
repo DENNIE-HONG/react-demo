@@ -28,7 +28,8 @@ export function getFeedList (afterId) {
       limit: 7,
       action: 'down',
       desktop: true,
-      after_id: afterId
+      after_id: afterId,
+      session_token: '0cab00c1e1231206c9ab62e69a149c90'
     }
   });
 }

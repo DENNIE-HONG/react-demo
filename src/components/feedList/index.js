@@ -12,10 +12,9 @@ class FeedList extends Component {
     super();
     this.state = {
       isLoading: true,
-      afterId: 0,
+      afterId: 13,
       feedList: [],
-      isEnd: false,
-      pageSize: 5
+      pageSize: 1
     };
     this.fetchData = this.fetchData.bind(this);
   }
@@ -29,7 +28,7 @@ class FeedList extends Component {
           (
             <dd key={item.id}>
               <h2>{item.target.title || item.target.question.title}</h2>
-              <p>{item.target.excerpt}</p>
+              <p>{item.target.excerpt_new}</p>
             </dd>
           ))
         }
@@ -39,12 +38,12 @@ class FeedList extends Component {
   fetchData () {
     return new Promise((resolve, reject) => {
       getFeedList(this.state.afterId).then((res) => {
-        const isEnd = (res.data.data.length < this.state.pageSize);
+        const feedList = res.data.data;
+        const isEnd = (feedList.length < this.state.pageSize);
         this.setState({
-          feedList: this.state.feedList.concat(res.data.data),
+          feedList: this.state.feedList.concat(feedList),
           isLoading: false,
-          isEnd: isEnd,
-          afterId: (this.state.afterId + res.data.data.length)
+          afterId: isEnd ? this.state.afterId : feedList[feedList.length - 1].offset
         });
         if (isEnd) {
           resolve('end');
@@ -56,9 +55,9 @@ class FeedList extends Component {
     });
   }
   render () {
-    const { isLoading, feedList, isEnd } = this.state;
+    const { isLoading, feedList } = this.state;
     let loadmore = null;
-    if (!isLoading && !isEnd) {
+    if (!isLoading) {
       loadmore = (
         <Loadmore onClick={this.fetchData} />
       );
