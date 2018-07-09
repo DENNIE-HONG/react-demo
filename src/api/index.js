@@ -19,6 +19,7 @@ export function postLogin (params) {
     }
   });
 }
+// feed流数据
 export function getFeedList (afterId) {
   return request({
     method: 'get',
@@ -30,6 +31,16 @@ export function getFeedList (afterId) {
       desktop: true,
       after_id: afterId,
       session_token: '0cab00c1e1231206c9ab62e69a149c90'
+    }
+  });
+}
+// 搜索数据
+export function getSearchSuggest (keyword) {
+  return request({
+    method: 'get',
+    url: '/zhihu/api/v4/search/suggest',
+    params: {
+      q: keyword
     }
   });
 }

@@ -1,4 +1,5 @@
 .com-autocomplete {
+  position: relative;
   .input-box {
     display: flex;
     width: 250px;
@@ -20,6 +21,57 @@
     }
     &:hover {
       border-color: $fblue;
+    }
+  }
+  .search-list {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 300px;
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    font-size: nth($fz, 1);
+    z-index: -888;
+    @include slide-up-top-leave;
+    &.active {
+      @include slide-up-top-enter(0.2s);
+      z-index: 1000;
+    }
+  }
+  .search-type {
+    padding-top: 5px;
+    border-bottom: 1px solid nth($fgray, 1);
+    .type-name {
+      padding-left: 10px;
+    }
+  }
+  h3 {
+    max-width: 100%;
+    padding: 0 20px;
+    color: nth($fblack, 2);
+    @include txthid;
+    @include hid;
+    @include wordbreak;
+    cursor: pointer;
+    font-size: nth($fz, 1);
+    line-height: 2.4;
+    transition: background 0.3s ease;
+    &:hover {
+      background-color: #e6f7ff;
+    }
+  }
+  .search-more {
+    font-size: nth($fz, 2);
+    text-align: center;
+    line-height: 35px;
+    color: nth($fblue, 1);
+  }
+  .search-hot-list,
+  .search-suggest-list {
+    &.active {
+      display: none;
     }
   }
 }

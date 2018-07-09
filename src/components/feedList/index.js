@@ -38,7 +38,7 @@ class FeedList extends Component {
   fetchData () {
     return new Promise((resolve, reject) => {
       getFeedList(this.state.afterId).then((res) => {
-        const feedList = res.data.data;
+        const feedList = res.data;
         const isEnd = (feedList.length < this.state.pageSize);
         this.setState({
           feedList: this.state.feedList.concat(feedList),

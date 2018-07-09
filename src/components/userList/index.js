@@ -12,7 +12,7 @@ class UserList extends React.Component {
   componentDidMount () {
     getUserList().then((res) => {
       this.setState({
-        userList: res.data.collections
+        userList: res.collections
       });
     }).catch((err) => {
       console.log(err);
