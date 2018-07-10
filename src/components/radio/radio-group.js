@@ -1,6 +1,6 @@
 /**
  * radio单选组
- * @param value     {String | Number}默认选中的值
+ * @param value     {String | Number} 默认选中的值
  * @param onChange  {function} 给父组件传递当前选中的值
 */
 import React, { Component } from 'react';
