@@ -1,10 +1,11 @@
 /**
  * checkbox
- * @param checked    {Boolean}, 是否选中
- * @param value      {String | Number} 选中的值, 默认是''
+ * @param defaultChecked    {Boolean}, 初始是否选中
+ * @param value             {String | Number} 选中的值, 默认是''
+ * @param onChange          {function} 回调给父组件，参数是该checkbox值与是否被选中
  * @author luyanhong
  * @example
- * <Checkbox checked={false} value="草莓" />选我</Checkbox>
+ * <Checkbox defaultChecked={true} value="草莓" onChagne={(value, checked) =>{...}}/>选我</Checkbox>
 */
 import React, { Component } from 'react';
 import './checkbox.scss';
