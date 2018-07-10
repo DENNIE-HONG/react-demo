@@ -1,0 +1,17 @@
+.com-checkbox {
+  display: inline-block;
+  cursor: pointer;
+  .checkbox {
+    margin-top: 3px;
+    font-size: nth($fz, 4);
+    &:hover {
+      border-color: nth($fblue, 1);
+    }
+  }
+  &-txt {
+    margin-left: 10px;
+  }
+}
+.com-checkbox-group {
+  display: inline-block;
+}

@@ -6,6 +6,7 @@ import showMessage from 'coms/message';
 import Input from 'coms/input';
 import Radio from 'coms/radio';
 import RadioGroup from 'coms/radio/radio-group';
+import CheckboxGroup from 'coms/checkbox/checkbox-group';
 import './login.scss';
 class Login extends Component {
   constructor (props) {
@@ -13,19 +14,23 @@ class Login extends Component {
     this.state = {
       name: isLogin() || '',
       password: '',
-      gender: 'man'
+      gender: 'man',
+      food: ['巧克力']
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleGender = this.handleGender.bind(this);
+    this.handleFood = this.handleFood.bind(this);
   }
   handleSubmit () {
     const sendData = {
       name: this.state.name,
       password: this.state.password,
-      gender: this.state.gender
+      gender: this.state.gender,
+      food: this.state.food.toString()
     };
+    console.log(sendData);
     postLogin(sendData).then(() => {
       this.props.history.push('/', null);
     }).catch((err) => {
@@ -46,8 +51,13 @@ class Login extends Component {
   handlePasswordChange (newValue) {
     this.setState({ password: newValue });
   }
-
+  handleFood (selectFoodList) {
+    this.setState({
+      food: selectFoodList
+    });
+  }
   render () {
+    const plainOptions = ['巧克力', '板栗', '薯条', '奶茶'];
     return (
       <div>
         <ComponentHeader keywords="登录" />
@@ -65,6 +75,10 @@ class Login extends Component {
             <Radio value="femate" >女</Radio>
             <Radio value="man" >男</Radio>
           </RadioGroup>
+          <label>
+            喜欢吃啥：
+            <CheckboxGroup options={plainOptions} value={this.state.food} onChange={this.handleFood} />
+          </label>
           <div className="btn-primary" onClick={this.handleSubmit}>确定</div>
         </form>
       </div>
