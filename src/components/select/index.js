@@ -14,8 +14,10 @@ class Select extends Component {
   constructor (props) {
     super(props);
     this.state = {
+      mode: props.mode || '',
       value: props.defaultValue,
-      open: false
+      open: false,
+      placeholder: props.placeholder || '请选择'
     };
     this.open = this.open.bind(this);
     this.select = this.select.bind(this);
@@ -44,13 +46,14 @@ class Select extends Component {
         <li key={index} className={`com-select-option ${selected ? 'active' : ''}`} onClick={this.select} value={item.props.value}>{item.props.children}</li>
       );
     });
+    !selectName && (selectName = this.state.placeholder);
     return (
-      <div className={`com-select ${this.state.open ? 'active' : ''}`} onClick={this.open}>
+      <div className={`com-select ${this.state.open ? 'active' : ''}`} onClick={this.open} style={this.props.style}>
         <span className="com-selected">{selectName}</span>
         <ul className="com-select-box">
           {options}
         </ul>
-        <i className="iconfont icon-right"></i>
+        {(this.props.mode != 'multiple') && <i className="iconfont icon-right"></i>}
       </div>
     );
   }

@@ -20,6 +20,7 @@
     display: none;
     background-color: white;
     @include boxShadow;
+    z-index: 700;
   }
   > .iconfont {
     font-size: nth($fz, 2);

@@ -92,6 +92,15 @@ class Login extends Component {
               <option value={3}>陈伟霆</option>
             </Select>
           </label>
+          <label>
+            选择标签：
+            <Select defaultValue={5} onChange={this.handleLike} mode="multiple" style={{ width: '300px' }}>
+              <option value={1}>爱学习</option>
+              <option value={2}>不要打扰我学习</option>
+              <option value={3}>沉迷学习</option>
+              <option value={4}>沉迷学习，不可自拔</option>
+            </Select>
+          </label>
           <div className="btn-primary" onClick={this.handleSubmit}>确定</div>
         </form>
       </div>
