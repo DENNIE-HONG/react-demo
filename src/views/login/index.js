@@ -7,6 +7,7 @@ import Input from 'coms/input';
 import Radio from 'coms/radio';
 import RadioGroup from 'coms/radio/radio-group';
 import CheckboxGroup from 'coms/checkbox/checkbox-group';
+import { Select } from 'coms/select';
 import './login.scss';
 class Login extends Component {
   constructor (props) {
@@ -22,6 +23,7 @@ class Login extends Component {
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleGender = this.handleGender.bind(this);
     this.handleFood = this.handleFood.bind(this);
+    this.handleLike = this.handleLike.bind(this);
   }
   handleSubmit () {
     const sendData = {
@@ -56,6 +58,9 @@ class Login extends Component {
       food: selectFoodList
     });
   }
+  handleLike (like) {
+    console.log(like);
+  }
   render () {
     const plainOptions = ['巧克力', '板栗', '薯条', '奶茶'];
     return (
@@ -78,6 +83,14 @@ class Login extends Component {
           <label>
             喜欢吃啥：
             <CheckboxGroup options={plainOptions} value={this.state.food} onChange={this.handleFood} />
+          </label>
+          <label>
+            谁最帅：
+            <Select defaultValue={2} onChange={this.handleLike}>
+              <option value={1}>吴亦凡</option>
+              <option value={2}>黄景瑜</option>
+              <option value={3}>陈伟霆</option>
+            </Select>
           </label>
           <div className="btn-primary" onClick={this.handleSubmit}>确定</div>
         </form>

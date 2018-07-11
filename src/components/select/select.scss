@@ -1,0 +1,53 @@
+.com-select {
+  position: relative;
+  display: inline-flex;
+  min-width: 100px;
+  height: 30px;
+  padding: 0 10px;
+  background-color: white;
+  border-radius: 2px;
+  border: 1px solid nth($fgray, 4);
+  align-items: center;
+  text-align: left;
+  .com-selected {
+    flex: 1;
+  }
+  &-box {
+    position: absolute;
+    top: 35px;
+    left: 0;
+    right: 0;
+    display: none;
+    background-color: white;
+    @include boxShadow;
+  }
+  > .iconfont {
+    font-size: nth($fz, 2);
+    transform: rotate(90deg);
+    transition: transform 0.3s ease;
+  }
+  &-option {
+    padding: 0 10px;
+    line-height: 30px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    &.active {
+      background-color: nth($fgray, 3);
+    }
+    &:hover {
+      background-color: nth($fblue, 2);
+    }
+  }
+  &.active {
+    border-color: nth($fblue, 1);
+    .com-select-box {
+      display: block;
+    }
+    > .iconfont {
+      transform: rotate(-90deg);
+    }
+  }
+  &:hover {
+    border-color: nth($fblue, 1);
+  }
+}

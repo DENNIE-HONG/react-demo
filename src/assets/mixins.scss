@@ -19,3 +19,6 @@
   transition: transform #{$duration} cubic-bezier(0.23, 1, 0.32, 1) 0.1s, opacity #{$duration} cubic-bezier(0.23, 1, 0.32, 1) 0.1s;
   transform-origin: center top;
 }
+@mixin boxShadow {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
