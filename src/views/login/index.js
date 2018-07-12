@@ -99,6 +99,7 @@ class Login extends Component {
               <option value={2}>不要打扰我学习</option>
               <option value={3}>沉迷学习</option>
               <option value={4}>沉迷学习，不可自拔</option>
+              <option value={5}>你们小点声</option>
             </Select>
           </label>
           <div className="btn-primary" onClick={this.handleSubmit}>确定</div>

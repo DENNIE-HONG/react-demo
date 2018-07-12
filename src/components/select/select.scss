@@ -2,7 +2,7 @@
   position: relative;
   display: inline-flex;
   min-width: 100px;
-  height: 30px;
+  min-height: 30px;
   padding: 0 10px;
   background-color: white;
   border-radius: 2px;
@@ -11,16 +11,20 @@
   text-align: left;
   .com-selected {
     flex: 1;
+    .tag {
+      margin: 5px 5px 5px 0;
+      cursor: pointer;
+    }
   }
   &-box {
     position: absolute;
     top: 35px;
     left: 0;
     right: 0;
-    display: none;
     background-color: white;
     @include boxShadow;
-    z-index: 700;
+    z-index: -100;
+    @include slide-up-top-leave;
   }
   > .iconfont {
     font-size: nth($fz, 2);
@@ -38,11 +42,27 @@
     &:hover {
       background-color: nth($fblue, 2);
     }
+    &.multiple {
+      &:hover,
+      &.active {
+        &:after {
+          content: '\2714';
+          float: right;
+          color: nth($fblack, 3);
+        }
+      }
+      &.active {
+        &:after {
+          color: nth($fblue, 1);
+        }
+      }
+    }
   }
   &.active {
     border-color: nth($fblue, 1);
     .com-select-box {
-      display: block;
+      @include slide-up-top-enter(0.3s);
+      z-index: 700;
     }
     > .iconfont {
       transform: rotate(-90deg);

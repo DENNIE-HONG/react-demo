@@ -1,0 +1,16 @@
+.tag {
+  display: inline-block;
+  height: 24px;
+  padding: 0 10px;
+  font-size: nth($fz, 2);
+  line-height: 22px;
+  border: 1px solid nth($fgray, 4);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: nth($fgray, 3);
+  color: nth($fblack, 3);
+  > .iconfont {
+    padding-left: 5px;
+    font-size: nth($fz, 2);
+  }
+}
