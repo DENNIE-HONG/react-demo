@@ -127,4 +127,4 @@ class Select extends Component {
     );
   }
 }
-export { Select };
+export default Select;

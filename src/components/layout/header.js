@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 require('assets/main.scss');
-class ComponentHeader extends Component {
+class Header extends Component {
   render () {
     return (
       <div className="application">
@@ -20,7 +20,7 @@ class ComponentHeader extends Component {
   }
 }
 
-ComponentHeader.propTypes = {
+Header.propTypes = {
   keywords: PropTypes.string.isRequired
 };
-export default ComponentHeader;
+export default Header;

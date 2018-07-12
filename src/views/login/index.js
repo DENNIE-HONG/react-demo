@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ComponentHeader from 'coms/layout/header';
+import Header from 'coms/layout/header';
 import Footer from 'coms/layout/footer';
 import { postLogin } from 'api';
 import isLogin from 'utils/islogin';
@@ -8,7 +8,7 @@ import Input from 'coms/input';
 import Radio from 'coms/radio';
 import RadioGroup from 'coms/radio/radio-group';
 import CheckboxGroup from 'coms/checkbox/checkbox-group';
-import { Select } from 'coms/select';
+import Select from 'coms/select';
 import './login.scss';
 class Login extends Component {
   constructor (props) {
@@ -66,7 +66,7 @@ class Login extends Component {
     const plainOptions = ['巧克力', '板栗', '薯条', '奶茶'];
     return (
       <div className="login">
-        <ComponentHeader keywords="登录" />
+        <Header keywords="登录" />
         <form>
           <h1>测试登录</h1>
           <label>
