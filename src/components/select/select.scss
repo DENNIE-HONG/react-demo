@@ -15,6 +15,9 @@
       margin: 5px 5px 5px 0;
       cursor: pointer;
     }
+    &.placeholder {
+      color: nth($fblack, 3);
+    }
   }
   &-box {
     position: absolute;

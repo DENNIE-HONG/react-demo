@@ -63,9 +63,10 @@ class Select extends Component {
         </ul>
       );
     } else {
-      !selectedList.length && (selectedList.push({ name: this.state.placeholder }));
+      const isSelectedNull = !selectedList.length;
+      isSelectedNull && (selectedList.push({ name: this.state.placeholder }));
       selectEle = (
-        <span className="com-selected">{selectedList[0].name}</span>
+        <span className={`com-selected ${isSelectedNull ? 'placeholder' : ''}`}>{selectedList[0].name}</span>
       );
     }
     return selectEle;

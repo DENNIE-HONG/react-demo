@@ -1,10 +1,28 @@
 footer {
-  padding: 30px 0;
   margin-top: 150px;
   color: white;
   text-align: center;
   background-color: black;
+  .footer-content {
+    padding: 30px 0;
+    border-bottom: 1px solid nth($fgray, 1);
+    section {
+      h1 {
+        margin-bottom: 10px;
+      }
+      a {
+        font-size: nth($fz, 2);
+        color: white;
+        > .iconfont {
+          padding-left: 5px;
+          font-size: nth($fz, 4);
+          color: nth($fblue, 1);
+        }
+      }
+    }
+  }
   .footer-bottom {
+    padding: 20px 0;
     small {
       .iconfont {
         margin-right: 5px;

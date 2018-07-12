@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ComponentHeader from 'coms/layout/header';
+import Footer from 'coms/layout/footer';
 import { postLogin } from 'api';
 import isLogin from 'utils/islogin';
 import showMessage from 'coms/message';
@@ -64,7 +65,7 @@ class Login extends Component {
   render () {
     const plainOptions = ['巧克力', '板栗', '薯条', '奶茶'];
     return (
-      <div>
+      <div className="login">
         <ComponentHeader keywords="登录" />
         <form>
           <h1>测试登录</h1>
@@ -80,10 +81,10 @@ class Login extends Component {
             <Radio value="femate" >女</Radio>
             <Radio value="man" >男</Radio>
           </RadioGroup>
-          <label>
+          <section>
             喜欢吃啥：
             <CheckboxGroup options={plainOptions} value={this.state.food} onChange={this.handleFood} />
-          </label>
+          </section>
           <label>
             谁最帅：
             <Select defaultValue={2} onChange={this.handleLike}>
@@ -92,7 +93,7 @@ class Login extends Component {
               <option value={3}>陈伟霆</option>
             </Select>
           </label>
-          <label>
+          <section>
             选择标签：
             <Select defaultValue={5} onChange={this.handleLike} mode="multiple" style={{ width: '300px' }}>
               <option value={1}>爱学习</option>
@@ -101,9 +102,10 @@ class Login extends Component {
               <option value={4}>沉迷学习，不可自拔</option>
               <option value={5}>你们小点声</option>
             </Select>
-          </label>
+          </section>
           <div className="btn-primary" onClick={this.handleSubmit}>确定</div>
         </form>
+        <Footer />
       </div>
     );
   }

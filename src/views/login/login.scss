@@ -1,14 +1,14 @@
 form {
   margin-top: 30px;
-  text-align: center;
+  margin-left: 100px;
 }
 h1 {
   font-size: nth($fz, 4);
 }
-label {
+label,
+section {
   display: block;
   margin-top: 15px;
-  margin-left: 20px;
   font-size: nth($fz, 2);
 }
 .btn-primary {

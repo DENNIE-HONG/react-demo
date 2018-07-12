@@ -35,9 +35,9 @@ class RadioGroup extends Component {
       );
     });
     return (
-      <label>
+      <div>
         {children}
-      </label>
+      </div>
     );
   }
 }
