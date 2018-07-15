@@ -5,7 +5,6 @@ import CommonHead from 'coms/commonHead';
 import UserList from 'coms/userList';
 import isLogin from 'utils/islogin';
 import FeedList from 'coms/feedList';
-import AutoComplete from 'coms/autoComplete';
 import './home.scss';
 class Home extends Component {
   constructor (props) {
@@ -24,7 +23,6 @@ class Home extends Component {
         <CommonHead />
         <div className="content">
           <div className="container-left">
-            <AutoComplete placeholder="请输入" />
             <h1>测试</h1>
             <div className="tag-list">
               <a className="tag" href="/">

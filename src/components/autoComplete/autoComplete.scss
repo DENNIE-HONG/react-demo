@@ -3,7 +3,7 @@
   .input-box {
     display: flex;
     width: 250px;
-    padding: 12px 15px;
+    padding: 6px 15px;
     background-color: white;
     box-sizing: border-box;
     border: 1px solid nth($fgray, 1);
@@ -20,7 +20,7 @@
       color: nth($fblack, 3);
     }
     &:hover {
-      border-color: $fblue;
+      border-color: nth($fblue, 1);
     }
   }
   .search-list {

@@ -9,6 +9,8 @@ import Radio from 'coms/radio';
 import RadioGroup from 'coms/radio/radio-group';
 import CheckboxGroup from 'coms/checkbox/checkbox-group';
 import Select from 'coms/select';
+import CommonHead from 'coms/commonHead';
+import Switch from 'coms/switch';
 import './login.scss';
 class Login extends Component {
   constructor (props) {
@@ -67,6 +69,7 @@ class Login extends Component {
     return (
       <div className="login">
         <Header keywords="登录" />
+        <CommonHead />
         <form>
           <h1>测试登录</h1>
           <label>
@@ -102,6 +105,10 @@ class Login extends Component {
               <option value={4}>沉迷学习，不可自拔</option>
               <option value={5}>你们小点声</option>
             </Select>
+          </section>
+          <section>
+            开关：
+            <Switch defaultChecked checkedChildren="开" unCheckedChildren="关" />
           </section>
           <div className="btn-primary" onClick={this.handleSubmit}>确定</div>
         </form>

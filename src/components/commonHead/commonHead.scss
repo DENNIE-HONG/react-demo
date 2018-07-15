@@ -3,4 +3,21 @@
   margin: auto;
   background-color: white;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
+  &-content {
+    display: flex;
+    width: $w10;
+    height: 100%;
+    margin: auto;
+    align-items: center;
+  }
+  &-logo {
+    width: 100px;
+    height: 100%;
+    margin-right: 30px;
+    background: url('../../assets/img/logo.png') top/100% 100% no-repeat;
+  }
+  &-link {
+    margin-right: 30px;
+    font-size: nth($fz, 3);
+  }
 }

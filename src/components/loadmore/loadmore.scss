@@ -4,7 +4,7 @@
   background-color: white;
   text-align: center;
   font-size: nth($fz, 2);
-  color: $fblue;
+  color: nth($fblue, 1);
   border-radius: 10px;
   &-loading,
   &-end,
@@ -31,7 +31,7 @@
       width: 60%;
       height: 1px;
       margin: 0 auto;
-      background-color: $fblue;
+      background-color: nth($fblue, 1);
       content: '';
     }
     .loadmore-txt,
