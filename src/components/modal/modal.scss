@@ -1,0 +1,21 @@
+.com-modal {
+  width: 520px;
+  border-radius: 4px;
+  background-color: white;
+  &-head {
+    padding: 15px 24px;
+    font-size: nth($fz, 3);
+    border-bottom: 1px solid nth($fgray, 1);
+  }
+  &-close {
+    height: 50px;
+    width: 40px;
+    line-height: 50px;
+    cursor: pointer;
+    > .iconfont {
+      padding-right: 24px;
+      font-size: nth($fz, 5);
+      color: nth($fblack, 3);
+    }
+  }
+}

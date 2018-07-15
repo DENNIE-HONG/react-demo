@@ -11,6 +11,7 @@ import CheckboxGroup from 'coms/checkbox/checkbox-group';
 import Select from 'coms/select';
 import CommonHead from 'coms/commonHead';
 import Switch from 'coms/switch';
+import showModal from 'coms/modal';
 import './login.scss';
 class Login extends Component {
   constructor (props) {
@@ -36,14 +37,18 @@ class Login extends Component {
       food: this.state.food.toString()
     };
     console.log(sendData);
-    postLogin(sendData).then(() => {
-      this.props.history.push('/', null);
-    }).catch((err) => {
-      showMessage({
-        type: 'error',
-        message: err
-      });
+    showModal({
+      title: '发送数据'
     });
+
+    // postLogin(sendData).then(() => {
+    //   this.props.history.push('/', null);
+    // }).catch((err) => {
+    //   showMessage({
+    //     type: 'error',
+    //     message: err
+    //   });
+    // });
   }
   handleGender (newValue) {
     this.setState({
