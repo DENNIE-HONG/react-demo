@@ -18,4 +18,21 @@
       color: nth($fblack, 3);
     }
   }
+  &-content {
+    padding: 20px 15px;
+    line-height: 22px;
+    font-size: nth($fz, 2);
+    border-bottom: 1px solid nth($fgray, 1);
+  }
+  &-btnbox {
+    padding: 10px 15px;
+    .btn-primary {
+      margin-left: 10px;
+    }
+  }
+}
+.com-comfirm {
+  width: 416px;
+  border-radius: 4px;
+  background-color: white;
 }

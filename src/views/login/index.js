@@ -38,7 +38,8 @@ class Login extends Component {
     };
     console.log(sendData);
     showModal({
-      title: '发送数据'
+      title: '发送数据',
+      content: `${sendData.name}, ${sendData.food}`
     });
 
     // postLogin(sendData).then(() => {
