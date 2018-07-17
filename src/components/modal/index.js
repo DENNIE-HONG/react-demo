@@ -14,7 +14,7 @@ function showModal (option) {
   const root = document.createElement('div');
   document.body.appendChild(root);
   render(
-    <Modal title={option.title} content={option.content} domNode={root} />,
+    <Modal title={option.title} content={option.content} domNode={root} onOk={option.onOk} />,
     root
   );
 }

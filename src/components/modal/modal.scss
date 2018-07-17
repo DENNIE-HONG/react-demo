@@ -31,8 +31,39 @@
     }
   }
 }
-.com-comfirm {
+.com-confirm {
   width: 416px;
+  padding: 15px 20px;
   border-radius: 4px;
   background-color: white;
+  box-sizing: border-box;
+  &-logo {
+    display: inline-block;
+    font-size: 25px;
+    color: nth($fyellow, 2);
+  }
+  &-content {
+    display: inline-block;
+    width: 330px;
+    margin-left: 10px;
+    vertical-align: top;
+    font-size: nth($fz, 2);
+    @include hid;
+    color: nth($fblack, 3);
+    h3 {
+      margin-top: 5px;
+      font-size: nth($fz, 3);
+      color: nth($fblack, 1);
+    }
+    span {
+      display: block;
+      margin-top: 10px;
+      @include wordbreak;
+    }
+  }
+  &-btnbox {
+    .btn-primary {
+      margin-left: 10px;
+    }
+  }
 }

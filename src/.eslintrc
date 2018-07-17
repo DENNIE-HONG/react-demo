@@ -29,7 +29,6 @@
     "comma-dangle": [2, "never"],
     "indent": [2, 2, {"SwitchCase": 1}],
     "linebreak-style":["off", "windows"],
-    "eqeqeq": 0,
     "func-names": 0,
     "import/imports-first": 0,
     "import/newline-after-import": 0,

@@ -26,6 +26,14 @@ class Select extends Component {
     this.open = this.open.bind(this);
     this.select = this.select.bind(this);
   }
+  // 点击空白区域关闭选项
+  componentDidMount () {
+    const self = this;
+    const { body } = document;
+    body.addEventListener('click', () => {
+      this.state.open && self.open();
+    }, false);
+  }
   /**
    * 获取选项列表dom
    * @return {Object} 返回第一个参数是选项列表, 第二个参数是选中对象数组
@@ -87,9 +95,13 @@ class Select extends Component {
     !isMultiple && this.setState({
       value: [value]
     });
-    isMultiple && !this.state.value.includes(value) && this.state.value.push(value);
+    isMultiple && !this.state.value.includes(value) && this.state.value.push(value) && this.setState({
+      value: this.state.value
+    });
+
     // 回调给父组件传递选中的值
     this.callback();
+    event.stopPropagation();
   }
   /**
    * 取消选中
@@ -117,7 +129,7 @@ class Select extends Component {
     const { options, selectedList } = this.getSelectList();
     const selectEle = this.getSelectedList(selectedList);
     return (
-      <div className={`com-select ${this.state.open ? 'active' : ''}`} onClick={this.open} style={this.props.style}>
+      <div className={`com-select${this.state.open ? ' active' : ''}`} onClick={this.open} style={this.props.style}>
         {selectEle}
         <ul className="com-select-box">
           {options}

@@ -11,7 +11,7 @@ import CheckboxGroup from 'coms/checkbox/checkbox-group';
 import Select from 'coms/select';
 import CommonHead from 'coms/commonHead';
 import Switch from 'coms/switch';
-import showModal from 'coms/modal';
+import showConfirm from 'coms/modal/confirm';
 import './login.scss';
 class Login extends Component {
   constructor (props) {
@@ -30,26 +30,27 @@ class Login extends Component {
     this.handleLike = this.handleLike.bind(this);
   }
   handleSubmit () {
+    const self = this;
     const sendData = {
       name: this.state.name,
       password: this.state.password,
       gender: this.state.gender,
       food: this.state.food.toString()
     };
-    console.log(sendData);
-    showModal({
-      title: '发送数据',
-      content: `${sendData.name}, ${sendData.food}`
+    showConfirm({
+      title: '确定发送数据吗？',
+      content: `${sendData.name}, ${sendData.food}`,
+      onOk () {
+        postLogin(sendData).then(() => {
+          self.props.history.push('/', null);
+        }).catch((err) => {
+          showMessage({
+            type: 'error',
+            message: err
+          });
+        });
+      }
     });
-
-    // postLogin(sendData).then(() => {
-    //   this.props.history.push('/', null);
-    // }).catch((err) => {
-    //   showMessage({
-    //     type: 'error',
-    //     message: err
-    //   });
-    // });
   }
   handleGender (newValue) {
     this.setState({

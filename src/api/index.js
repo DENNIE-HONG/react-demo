@@ -6,7 +6,7 @@ export function getUserList () {
 }
 export function postLogin (params) {
   return new Promise((reslove, reject) => {
-    if (params.name != '' && params.password != '') {
+    if (params.name !== '' && params.password !== '') {
       cookies.set('name', params.name, {
         path: '/'
       });

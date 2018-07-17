@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM, { render } from 'react-dom';
+import './modal.scss';
 /**
  * 确定框对外接口
  * @param {Object} option  包括title和content
@@ -9,26 +10,44 @@ import ReactDOM, { render } from 'react-dom';
  *    content: '对xx进行此操作'
  * });
 */
-function showComfirm (option) {
+function showConfirm (option) {
   const root = document.createElement('div');
   document.body.appendChild(root);
   render(
-    <Comfirm title={option.title} content={option.content} domNode={root} />,
+    <Confirm title={option.title} content={option.content} domNode={root} onOk={option.onOk} />,
     root
   );
 }
-class Comfirm extends Component {
+class Confirm extends Component {
   constructor (props) {
     super(props);
-    this.state = {};
+    this.state = {
+      title: props.title || '确定删除此项？',
+      content: props.content || ''
+    };
+    this.destroy = this.destroy.bind(this);
+    this.onOk = this.onOk.bind(this);
+  }
+  onOk () {
+    this.destroy();
+    this.props.onOk && this.props.onOk();
+  }
+  destroy () {
+    this.props.domNode.parentNode.removeChild(this.props.domNode);
   }
   render () {
+    const { content } = this.state;
     return ReactDOM.createPortal(
       <div className="modal-bg">
-        <div className="com-comfirm">
-          <i className="iconfont icon-close"></i>
-          <div className="com-comfirm-content">
-            <h3>确定删除此项？</h3>
+        <div className="com-confirm">
+          <i className="iconfont icon-ask com-confirm-logo"></i>
+          <div className="com-confirm-content">
+            <h3>{this.state.title}</h3>
+            {content && <span>{content}</span>}
+          </div>
+          <div className="com-confirm-btnbox pull-right">
+            <div className="btn" onClick={this.destroy}>取消</div>
+            <div className="btn-primary" onClick={this.onOk}>确定</div>
           </div>
         </div>
       </div>,
@@ -36,4 +55,4 @@ class Comfirm extends Component {
     );
   }
 }
-export default showComfirm;
+export default showConfirm;
