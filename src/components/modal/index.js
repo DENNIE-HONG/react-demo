@@ -28,12 +28,16 @@ class Modal extends Component {
     this.destroy = this.destroy.bind(this);
     this.onOk = this.onOk.bind(this);
   }
+  componentDidMount () {
+    document.documentElement.classList.add('lock');
+  }
   onOk () {
     this.destroy();
     this.props.onOk && this.props.onOk();
   }
   destroy () {
     this.props.domNode.parentNode.removeChild(this.props.domNode);
+    document.documentElement.classList.remove('lock');
   }
   render () {
     return ReactDOM.createPortal(

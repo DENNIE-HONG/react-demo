@@ -98,3 +98,10 @@ input.placeholder {
   width: $w10;
   margin: auto;
 }
+/* 锁屏 */
+html {
+  &.lock {
+    height: 100%;
+    overflow: hidden;
+  }
+}

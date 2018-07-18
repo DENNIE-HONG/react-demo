@@ -20,4 +20,14 @@
     margin-right: 30px;
     font-size: nth($fz, 3);
   }
+  &-user {
+    width: 50px;
+    margin-left: 50px;
+    .user-pic {
+      width: 40px;
+      height: 40px;
+      margin-top: 5px;
+      cursor: pointer;
+    }
+  }
 }
