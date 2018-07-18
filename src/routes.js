@@ -4,6 +4,7 @@ import Home from './views/home';
 import NotFound from './views/404';
 import Login from './views/login';
 import Profile from './views/profile';
+import Edit from './views/edit';
 class RouteMap extends Component {
   render () {
     return (
@@ -13,6 +14,7 @@ class RouteMap extends Component {
             <Route path="/" exact component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/profile" component={Profile} />
+            <Route path="/edit" component={Edit} />
             <Route component={NotFound} />
           </Switch>
         </div>

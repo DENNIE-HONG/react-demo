@@ -6,7 +6,7 @@
     margin-right: 10px;
     width: 8px;
     height: 8px;
-    background-color: $fblue;
+    background-color: nth($fblue, 1);
     animation: spin 0.7s infinite linear;
     &:nth-child(2) {
       animation-delay: 0.13s;

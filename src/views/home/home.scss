@@ -1,6 +1,9 @@
 .home {
   min-height: 100%;
   background-color: nth($fgray, 3);
+  .content {
+    overflow: hidden;
+  }
 }
 .container-left {
   float: left;
@@ -32,7 +35,4 @@
       vertical-align: top;
     }
   }
-}
-.content {
-  overflow: hidden;
 }
