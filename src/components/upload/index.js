@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Loading from 'coms/loading';
 import showMessage from 'coms/message';
+import { uploadImg } from 'api';
 import './upload.scss';
 class Upload extends Component {
   constructor (props) {
@@ -9,30 +10,39 @@ class Upload extends Component {
       maxSize: props.maxSize || 5,
       type: props.acceptType || 'png,jpg,jpeg,bmp',
       isLoading: false,
-      imgUrl: ''
+      imgUrl: props.file || ''
     };
     this.handlePic = this.handlePic.bind(this);
+    console.log(1);
   }
   async handlePic (event) {
-    this.setState({
-      isLoading: true
-    });
-    const file = event.target.files[0];
-    const errorMsg = this.check(file);
-    if (errorMsg) {
-      showMessage({
-        type: 'error',
-        text: errorMsg
-      });
+    try {
       this.setState({
-        isLoading: false
+        isLoading: true
       });
-      return;
+      const file = event.target.files[0];
+      const errorMsg = this.check(file);
+      if (errorMsg) {
+        this.uploadFail(errorMsg);
+        return;
+      }
+      const base64Url = await this.changeToBase64(file);
+      this.setState({
+        isLoading: false,
+        imgUrl: base64Url
+      });
+      uploadImg(base64Url);
+    } catch (err) {
+      this.uploadFail();
     }
-    const base64Url = await this.changeToBase64(file);
+  }
+  uploadFail (errorMsg = '上传图片失败，请稍候再试') {
+    showMessage({
+      type: 'error',
+      message: errorMsg
+    });
     this.setState({
-      isLoading: false,
-      imgUrl: base64Url
+      isLoading: false
     });
   }
   /**

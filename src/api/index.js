@@ -44,3 +44,22 @@ export function getSearchSuggest (keyword) {
     }
   });
 }
+/**
+ * @param {String} 图片的base64编码，不传参数则返回已存数据
+ */
+export function uploadImg (imgUrl) {
+  const name = 'img';
+  const oldImgUrl = localStorage.getItem('img') || null;
+  if (imgUrl) {
+    !oldImgUrl && (oldImgUrl !== imgUrl) && localStorage.setItem(name, imgUrl);
+    return Promise.resolve({
+      code: 200,
+      msg: ''
+    });
+  }
+  return Promise.resolve({
+    code: 200,
+    data: oldImgUrl,
+    msg: 'success'
+  });
+}

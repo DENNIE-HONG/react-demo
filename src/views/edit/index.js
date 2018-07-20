@@ -9,17 +9,28 @@ import Select from 'coms/select';
 import Switch from 'coms/switch';
 import showConfirm from 'coms/modal/confirm';
 import Upload from 'coms/upload';
+import { uploadImg } from 'api';
 class Edit extends Component {
   constructor (props) {
     super(props);
     this.state = {
       gender: 'man',
-      food: ['巧克力']
+      food: ['巧克力'],
+      avatar: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleGender = this.handleGender.bind(this);
     this.handleFood = this.handleFood.bind(this);
     this.handleLike = this.handleLike.bind(this);
+  }
+  componentDidMount () {
+    uploadImg().then((res) => {
+      console.log(res);
+      const avatar = res.data;
+      this.setState({
+        avatar
+      });
+    });
   }
   handleGender (newValue) {
     this.setState({
@@ -55,7 +66,7 @@ class Edit extends Component {
         <CommonHead />
         <div className="content">
           <section>
-            <Upload />
+            <Upload file={this.state.avatar} />
           </section>
           <RadioGroup onChange={this.handleGender} value={this.state.gender}>
             <Radio value="femate" >女</Radio>
