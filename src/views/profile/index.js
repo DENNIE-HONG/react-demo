@@ -3,11 +3,30 @@ import Header from 'coms/layout/header';
 import Footer from 'coms/layout/footer';
 import CommonHead from 'coms/commonHead';
 import userImg from 'assets/img/user.png';
+import isLogin from 'utils/islogin';
+import { getUserInfo } from 'api';
 import './profile.scss';
 class Profile extends Component {
   constructor (props) {
     super(props);
-    this.state = {};
+    this.state = {
+      avatar: userImg,
+      name: ''
+    };
+  }
+  componentDidMount () {
+    if (!isLogin()) {
+      this.props.history.push('/login', null);
+      return;
+    }
+    getUserInfo().then((res) => {
+      this.setState({
+        avatar: res.data.avatar,
+        name: res.data.name
+      });
+    }).catch((res) => {
+      console.log(res.msg);
+    });
   }
   render () {
     return (
@@ -17,9 +36,9 @@ class Profile extends Component {
         <div className="content">
           <header className="profile-header">
             <div className="profile-header-content">
-              <div className="profile-pic"><img src={userImg} /></div>
+              <div className="profile-pic"><img src={this.state.avatar} /></div>
               <div className="profile-info">
-                <h1>名字</h1>
+                <h1>{this.state.name}</h1>
               </div>
               <a href="/edit" className="btn profile-btn">编辑个人资料</a>
             </div>

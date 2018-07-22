@@ -7,7 +7,7 @@ import './menu.scss';
 class Item extends Component {
   render () {
     return (
-      <li className="com-menu-item">{this.props.children}</li>
+      <li className="com-menu-item" onClick={this.props.onClick}>{this.props.children}</li>
     );
   }
 }

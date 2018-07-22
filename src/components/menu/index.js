@@ -17,7 +17,7 @@ class Menu extends Component {
     return (
       <ul className="com-menu" style={this.props.style}>
         {this.props.children.map((item, index) => (
-          <Item key={index}>{item.props.children}</Item>
+          <Item key={index} onClick={item.props.onClick}>{item.props.children}</Item>
         ))}
       </ul>
     );

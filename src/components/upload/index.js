@@ -1,7 +1,16 @@
+/**
+ * 上传图片
+ * @param maxSize       {Number} 图片最大尺寸， 默认是5M
+ * @param acceptType    {String} 接受的图片类型，默认是png,jpg,jpeg,bmp
+ * @param file          {String} 默认图片的url
+ * @param onDone        {function} 上传完图片回调函数，参数是图片base64编码的url
+ * @author luyanhong 2018-07-21
+ * @example
+ * <Upload onDone={...}/>
+*/
 import React, { Component } from 'react';
 import Loading from 'coms/loading';
 import showMessage from 'coms/message';
-import { uploadImg } from 'api';
 import './upload.scss';
 class Upload extends Component {
   constructor (props) {
@@ -13,7 +22,6 @@ class Upload extends Component {
       imgUrl: props.file || ''
     };
     this.handlePic = this.handlePic.bind(this);
-    console.log(1);
   }
   async handlePic (event) {
     try {
@@ -31,7 +39,7 @@ class Upload extends Component {
         isLoading: false,
         imgUrl: base64Url
       });
-      uploadImg(base64Url);
+      this.props.onDone && this.props.onDone(base64Url);
     } catch (err) {
       this.uploadFail();
     }

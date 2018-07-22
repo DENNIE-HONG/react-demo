@@ -1,4 +1,5 @@
 import Cookies from 'universal-cookie';
+import userImg from 'assets/img/user.png';
 import request from '../plugins/axios';
 const cookies = new Cookies();
 export function getUserList () {
@@ -48,10 +49,11 @@ export function getSearchSuggest (keyword) {
  * @param {String} 图片的base64编码，不传参数则返回已存数据
  */
 export function uploadImg (imgUrl) {
-  const name = 'img';
-  const oldImgUrl = localStorage.getItem('img') || null;
+  const name = cookies.get('name');
+  const oldImgUrl = localStorage.getItem(name) || null;
   if (imgUrl) {
-    !oldImgUrl && (oldImgUrl !== imgUrl) && localStorage.setItem(name, imgUrl);
+    !oldImgUrl && localStorage.setItem(name, imgUrl);
+    oldImgUrl && (oldImgUrl !== imgUrl) && localStorage.setItem(name, imgUrl);
     return Promise.resolve({
       code: 200,
       msg: ''
@@ -61,5 +63,50 @@ export function uploadImg (imgUrl) {
     code: 200,
     data: oldImgUrl,
     msg: 'success'
+  });
+}
+/**
+ * 获取用户数据
+*/
+export function getUserInfo () {
+  return new Promise((resolve, reject) => {
+    try {
+      const name = cookies.get('name') === 'undefined' ? null : cookies.get('name');
+      const avatar = localStorage.getItem(name) || userImg;
+      resolve({
+        code: 200,
+        data: {
+          name,
+          avatar
+        },
+        msg: ''
+      });
+    } catch (err) {
+      reject({
+        code: 1,
+        msg: err
+      });
+    }
+  });
+}
+/**
+ * 登出
+*/
+export function logout () {
+  return new Promise((resolve, reject) => {
+    try {
+      cookies.remove('name', {
+        path: '/'
+      });
+      resolve({
+        code: 200,
+        msg: ''
+      });
+    } catch (err) {
+      reject({
+        code: 1,
+        msg: err
+      });
+    }
   });
 }
