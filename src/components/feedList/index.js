@@ -12,7 +12,7 @@ class FeedList extends Component {
     super();
     this.state = {
       isLoading: true,
-      afterId: 13,
+      afterId: 6,
       feedList: [],
       pageSize: 1
     };

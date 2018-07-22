@@ -31,7 +31,7 @@ export function getFeedList (afterId) {
       action: 'down',
       desktop: true,
       after_id: afterId,
-      session_token: '0cab00c1e1231206c9ab62e69a149c90'
+      session_token: '7b3aee59f8005e7cdd97912d7cba5246'
     }
   });
 }
