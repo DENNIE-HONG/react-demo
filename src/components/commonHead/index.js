@@ -13,8 +13,9 @@ class CommonHead extends Component {
       name: ''
     };
     this.logout = this.logout.bind(this);
+    this.fetchData();
   }
-  componentDidMount () {
+  fetchData () {
     getUserInfo().then((res) => {
       res.data.name && this.setState({
         avatar: res.data.avatar,

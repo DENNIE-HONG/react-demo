@@ -37,6 +37,7 @@ class Confirm extends Component {
   }
   destroy () {
     this.props.domNode.parentNode.removeChild(this.props.domNode);
+    ReactDOM.unmountComponentAtNode(this.props.domNode);
     document.documentElement.classList.remove('lock');
   }
   render () {

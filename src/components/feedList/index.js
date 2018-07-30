@@ -17,8 +17,6 @@ class FeedList extends Component {
       pageSize: 1
     };
     this.fetchData = this.fetchData.bind(this);
-  }
-  componentDidMount () {
     this.fetchData();
   }
   getFeedli (feedlist) {

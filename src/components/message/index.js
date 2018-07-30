@@ -25,6 +25,7 @@ class Message extends Component {
         message: newMessage
       });
       self.props.domNode.parentNode.removeChild(self.props.domNode);
+      ReactDOM.unmountComponentAtNode(self.props.domNode);
     }, 3000);
   }
   render () {
