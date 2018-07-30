@@ -7,13 +7,19 @@
 */
 import React, { Component } from 'react';
 import { debounce } from 'throttle-debounce';
+import PropTypes from 'prop-types';
 import { getSearchSuggest } from 'api';
 import './autoComplete.scss';
 class AutoComplete extends Component {
+  static propTypes = {
+    placeholder: PropTypes.string
+  }
+  static defaultProps = {
+    placeholder: ''
+  };
   constructor (props) {
     super(props);
     this.state = {
-      placeholder: props.placeholder || '',
       isSearchList: false,
       searchList: null,
       keyword: ''
@@ -86,7 +92,7 @@ class AutoComplete extends Component {
     return (
       <div className="com-autocomplete">
         <div className="input-box">
-          <input type="text" placeholder={this.state.placeholder} onChange={(e) => { e.persist(); this.getSearchList(e); }} onFocus={this.showSearchList.bind(this, true)} onBlur={this.showSearchList.bind(this, false)} />
+          <input type="text" placeholder={this.props.placeholder} onChange={(e) => { e.persist(); this.getSearchList(e); }} onFocus={this.showSearchList.bind(this, true)} onBlur={this.showSearchList.bind(this, false)} />
           <i className="iconfont icon-search"></i>
         </div>
         {hotList}

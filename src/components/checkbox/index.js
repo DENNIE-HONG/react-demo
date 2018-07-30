@@ -8,20 +8,33 @@
  * <Checkbox defaultChecked={true} value="草莓" onChagne={(value, checked) =>{...}}/>选我</Checkbox>
 */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './checkbox.scss';
 class Checkbox extends Component {
+  static propTypes = {
+    defaultChecked: PropTypes.Boolean,
+    value: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number
+    ]).isRequired,
+    onChagne: PropTypes.func
+  }
+  static defaultProps = {
+    defaultChecked: false,
+    onChagne: false
+  }
   constructor (props) {
     super(props);
     this.state = {
-      value: props.value || '',
-      checked: props.defaultChecked || false
+      value: props.value,
+      checked: props.defaultChecked
     };
     this.handleChange = this.handleChange.bind(this);
   }
   handleChange () {
     const checked = !this.state.checked;
     this.setState({
-      checked: checked
+      checked
     });
     this.props.onChange && this.props.onChange(this.state.value, checked);
   }
