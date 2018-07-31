@@ -1,3 +1,7 @@
+/**
+ * 头部banner拦模块
+ * @author luyanhong
+*/
 import React, { Component } from 'react';
 import AutoComplete from 'coms/autoComplete';
 import Dropdown from 'coms/dropdown';
@@ -10,7 +14,7 @@ class CommonHead extends Component {
     super();
     this.state = {
       avatar: userImg,
-      name: ''
+      name: null
     };
     this.logout = this.logout.bind(this);
     this.fetchData();

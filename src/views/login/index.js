@@ -55,7 +55,7 @@ class Login extends Component {
           <h1>测试登录</h1>
           <label>
             账号：
-            <Input placeholder="请输入账号" maxLength="20" value={this.state.name} onChange={this.handleNameChange} />
+            <Input placeholder="请输入账号" maxLength="10" value={this.state.name} onChange={this.handleNameChange} />
           </label>
           <label>
             密码：

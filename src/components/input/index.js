@@ -7,13 +7,25 @@
  * @author luyanhong
 */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './input.scss';
 class Input extends Component {
+  static propTypes = {
+    placeholder: PropTypes.string,
+    maxLength: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string
+    ]),
+    onChange: PropTypes.func
+  }
+  static defaultProps = {
+    placeholder: '请输入内容',
+    maxLength: 1000,
+    onChange: false
+  }
   constructor (props) {
     super(props);
     this.state = {
-      placeholder: props.placeholder || '请输入内容',
-      maxLength: props.maxLength || 1000,
       value: props.value || ''
     };
     this.handleChange = this.handleChange.bind(this);
@@ -26,7 +38,8 @@ class Input extends Component {
     }
   }
   render () {
-    const { placeholder, maxLength, value } = this.state;
+    const { placeholder, maxLength } = this.props;
+    const { value } = this.state;
     return (
       <input type="text" placeholder={placeholder} maxLength={maxLength} onChange={this.handleChange} value={value} className="com-input" />
     );

@@ -1,11 +1,23 @@
+/**
+ * 加载更多feed流模块
+ * @param afterId   可选，上一个列表id
+ * @author luyahong
+*/
 import React, { Component } from 'react';
 import ReactDOM, { render } from 'react-dom';
+import PropTypes from 'prop-types';
 import { getFeedList } from 'api';
 class Feedli extends Component {
+  static propTypes = {
+    afterId: PropTypes.number
+  }
+  static defaultProps = {
+    afterId: 0
+  }
   constructor (props) {
     super(props);
     this.state = {
-      afterId: props.afterId || 0,
+      afterId: props.afterId,
       feedList: []
     };
   }

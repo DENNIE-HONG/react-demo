@@ -1,19 +1,29 @@
 /**
  * 多选框组
- * @param options      {Array} 必须，可选值组
- * @param value        {Array} 选中值组
- * @param onChange     {function} 回调，参数是选中的值
+ * @param options      {Array}    必须，可选值组
+ * @param value        {Array}    可选，选中值组，默认是[]
+ * @param onChange     {function} 可选，回调，参数是选中的值
  * @author luyanhong
  * @example
  * <CheckboxGroup options={[1, 2]} value={[1]} onChange={function} />
 */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Checkbox from './';
 class CheckboxGroup extends Component {
+  static propTypes = {
+    options: PropTypes.array.isRequired,
+    value: PropTypes.array,
+    onChange: PropTypes.func
+  }
+  static defaultProps = {
+    value: [],
+    onChange: false
+  }
   constructor (props) {
     super(props);
     this.state = {
-      value: new Set(props.value || [])
+      value: new Set(props.value)
     };
     this.onCheckboxChange = this.onCheckboxChange.bind(this);
   }
