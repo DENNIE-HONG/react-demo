@@ -3,6 +3,9 @@ import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 require('assets/main.scss');
 class Header extends Component {
+  static propTypes = {
+    keywords: PropTypes.string.isRequired
+  }
   render () {
     return (
       <div className="application">
@@ -19,8 +22,4 @@ class Header extends Component {
     );
   }
 }
-
-Header.propTypes = {
-  keywords: PropTypes.string.isRequired
-};
 export default Header;

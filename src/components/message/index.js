@@ -6,40 +6,37 @@
 */
 import React, { Component } from 'react';
 import ReactDOM, { render } from 'react-dom';
+import PropTypes from 'prop-types';
 import './message.scss';
 class Message extends Component {
+  static propTypes = {
+    type: PropTypes.string,
+    message: PropTypes.string.isRequired
+  }
+  static defaultProps = {
+    type: 'info'
+  }
   constructor (props) {
     super(props);
-    this.state = {
-      type: props.type || 'info',
-      message: props.message || ''
-    };
     this.remove();
   }
   // 3秒后清除提示
   remove () {
     const self = this;
-    const newMessage = '';
     setTimeout(() => {
-      this.setState({
-        message: newMessage
-      });
       self.props.domNode.parentNode.removeChild(self.props.domNode);
       ReactDOM.unmountComponentAtNode(self.props.domNode);
     }, 3000);
   }
   render () {
-    const { type, message } = this.state;
-    let messageContainer = null;
-    if (message) {
-      messageContainer = (
-        <div className="message">
-          <div className={type}>
-            <i className={`iconfont icon-${type}`}></i>{message}
-          </div>
+    const { type, message } = this.props;
+    const messageContainer = (
+      <div className="message">
+        <div className={type}>
+          <i className={`iconfont icon-${type}`}></i>{message}
         </div>
-      );
-    }
+      </div>
+    );
     return ReactDOM.createPortal(
       <div>{ messageContainer }</div>,
       this.props.domNode

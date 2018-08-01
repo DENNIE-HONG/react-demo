@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 import './checkbox.scss';
 class Checkbox extends Component {
   static propTypes = {
-    defaultChecked: PropTypes.Boolean,
+    defaultChecked: PropTypes.bool,
     value: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number
@@ -21,7 +21,7 @@ class Checkbox extends Component {
   }
   static defaultProps = {
     defaultChecked: false,
-    onChagne: false
+    onChagne: undefined
   }
   constructor (props) {
     super(props);

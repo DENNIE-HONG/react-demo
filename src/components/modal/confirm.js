@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM, { render } from 'react-dom';
+import PropTypes from 'prop-types';
 import './modal.scss';
 /**
  * 确定框对外接口
- * @param {Object} option  包括title和content
+ * @param {Object} option  包括title和content、onOk
  * @example
  * showModal({
  *    title: '标题',
@@ -19,12 +20,18 @@ function showConfirm (option) {
   );
 }
 class Confirm extends Component {
+  static propTypes = {
+    title: PropTypes.string,
+    content: PropTypes.string,
+    onOk: PropTypes.func
+  }
+  static defaultProps = {
+    title: '确定删除此项？',
+    content: '',
+    onOk: undefined
+  }
   constructor (props) {
     super(props);
-    this.state = {
-      title: props.title || '确定删除此项？',
-      content: props.content || ''
-    };
     this.destroy = this.destroy.bind(this);
     this.onOk = this.onOk.bind(this);
   }
@@ -41,13 +48,13 @@ class Confirm extends Component {
     document.documentElement.classList.remove('lock');
   }
   render () {
-    const { content } = this.state;
+    const { title, content } = this.props;
     return ReactDOM.createPortal(
       <div className="modal-bg">
         <div className="com-confirm">
           <i className="iconfont icon-ask com-confirm-logo"></i>
           <div className="com-confirm-content">
-            <h3>{this.state.title}</h3>
+            <h3>{title}</h3>
             {content && <span>{content}</span>}
           </div>
           <div className="com-confirm-btnbox pull-right">

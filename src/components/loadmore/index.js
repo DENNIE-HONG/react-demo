@@ -6,9 +6,13 @@
  * <Loadmore onClick={return new Primose...} />
 */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import showMessage from 'coms/message';
 import './loadmore.scss';
 class Loadmore extends Component {
+  static propTypes = {
+    onClick: PropTypes.func.isRequired
+  }
   constructor (props) {
     super(props);
     this.state = {
