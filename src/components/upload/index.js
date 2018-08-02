@@ -72,7 +72,7 @@ class Upload extends Component {
     const type = file.type.split('/')[1];
     const reg = new RegExp(type);
     let errorMsg;
-    if (!reg.test(this.props.type)) {
+    if (!reg.test(this.props.acceptType)) {
       errorMsg = '图片类型不对哦';
     }
     if (size > this.props.maxSize) {

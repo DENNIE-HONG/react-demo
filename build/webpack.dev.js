@@ -3,6 +3,7 @@ const merge = require('webpack-merge');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WEBPACK_DEV_CONFIG = require('../config').WEBPACK_DEV_CONFIG;
+const React = require('react');
 module.exports = (env) => {
   env.production = env.production !== 'false';
   return merge(common(env), {
@@ -43,7 +44,11 @@ module.exports = (env) => {
           pathRewrite: { '^/zhihu': '' }
         }
       },
-      historyApiFallback: true
+      historyApiFallback: true,
+      after: function() {
+        const { whyDidYouUpdate } = require('why-did-you-update');
+        whyDidYouUpdate(React);
+      }
     },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
