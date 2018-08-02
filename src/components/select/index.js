@@ -11,8 +11,23 @@
  * </Select>
 */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './select.scss';
 class Select extends Component {
+  static propTypes = {
+    defaultValue: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+      PropTypes.array
+    ]),
+    placeholder: PropTypes.string,
+    mode: PropTypes.string
+  }
+  static defaultProps = {
+    defaultValue: [],
+    placeholder: '请选择',
+    mode: ''
+  }
   constructor (props) {
     super(props);
     // 将默认值转化为数组
@@ -20,7 +35,6 @@ class Select extends Component {
     this.state = {
       value: defaultValue,
       open: false,
-      placeholder: props.placeholder || '请选择',
       isMultiple: props.mode === 'multiple'
     };
     this.open = this.open.bind(this);
@@ -72,7 +86,7 @@ class Select extends Component {
       );
     } else {
       const isSelectedNull = !selectedList.length;
-      isSelectedNull && (selectedList.push({ name: this.state.placeholder }));
+      isSelectedNull && (selectedList.push({ name: this.props.placeholder }));
       selectEle = (
         <span className={`com-selected ${isSelectedNull ? 'placeholder' : ''}`}>{selectedList[0].name}</span>
       );

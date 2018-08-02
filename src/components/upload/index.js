@@ -9,17 +9,28 @@
  * <Upload onDone={...}/>
 */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Loading from 'coms/loading';
 import showMessage from 'coms/message';
 import './upload.scss';
 class Upload extends Component {
+  static propTypes = {
+    maxSize: PropTypes.number,
+    acceptType: PropTypes.string,
+    file: PropTypes.string,
+    onDone: PropTypes.func
+  }
+  static defaultProps = {
+    maxSize: 5,
+    acceptType: 'png,jpg,jpeg,bmp',
+    file: '',
+    onDone: undefined
+  }
   constructor (props) {
     super(props);
     this.state = {
-      maxSize: props.maxSize || 5,
-      type: props.acceptType || 'png,jpg,jpeg,bmp',
       isLoading: false,
-      imgUrl: props.file || ''
+      imgUrl: props.file
     };
     this.handlePic = this.handlePic.bind(this);
   }
@@ -61,11 +72,11 @@ class Upload extends Component {
     const type = file.type.split('/')[1];
     const reg = new RegExp(type);
     let errorMsg;
-    if (!reg.test(this.state.type)) {
+    if (!reg.test(this.props.type)) {
       errorMsg = '图片类型不对哦';
     }
-    if (size > this.state.maxSize) {
-      errorMsg = `图片超过${this.state.maxSize}M了哦`;
+    if (size > this.props.maxSize) {
+      errorMsg = `图片超过${this.props.maxSize}M了哦`;
     }
     return errorMsg;
   }

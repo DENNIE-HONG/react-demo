@@ -1,8 +1,14 @@
-import React from 'react';
+/**
+ * 用户列表模块
+ * @author luyanhong
+ * @example
+ * <UserList />
+*/
+import React, { Component } from 'react';
 import { getUserList } from 'api';
 require('./userList.scss');
 
-class UserList extends React.Component {
+class UserList extends Component {
   constructor (props) {
     super(props);
     this.state = {

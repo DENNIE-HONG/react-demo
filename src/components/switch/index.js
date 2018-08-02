@@ -5,14 +5,29 @@
  * @param unCheckedChildren  { String } 'off' 显示的文案
  * @param onChange           { Function } 返回当前开关的状态，true表示'on'
  * @author luyanhong
+ * @example
+ * <Switch defaultChecked checkedChildren="开" unCheckedChildren="关" />
 */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './switch.scss';
 class Switch extends Component {
+  static propTypes = {
+    defaultChecked: PropTypes.bool,
+    checkedChildren: PropTypes.string,
+    unCheckedChildren: PropTypes.string,
+    onChange: PropTypes.func
+  }
+  static defaultProps = {
+    defaultChecked: false,
+    checkedChildren: '',
+    unCheckedChildren: '',
+    onChange: undefined
+  }
   constructor (props) {
     super(props);
     this.state = {
-      checked: props.defaultChecked || false
+      checked: props.defaultChecked
     };
     this.handleChange = this.handleChange.bind(this);
   }
