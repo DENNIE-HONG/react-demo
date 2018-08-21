@@ -23,8 +23,6 @@ module.exports = (env) => {
       publicPath: WEBPACK_DEV_CONFIG.assetsPublicPath,
       overlay: true,
       stats: {
-        warnings: true,
-        errors: true,
         colors: true,
         modules: false,
         chunks: false

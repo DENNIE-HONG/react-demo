@@ -7,8 +7,8 @@
  * @example
  * <CheckboxGroup options={[1, 2]} value={[1]} onChange={function} />
 */
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import Checkbox from './';
 class CheckboxGroup extends Component {
   static propTypes = {
