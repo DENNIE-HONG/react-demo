@@ -5,7 +5,7 @@
 import React, { Component } from 'react';
 import AutoComplete from 'coms/autoComplete';
 import Dropdown from 'coms/dropdown';
-import { Menu } from 'coms/menu';
+import Menu from 'coms/menu';
 import userImg from 'assets/img/user.png';
 import { getUserInfo, logout } from 'api';
 import './commonHead.scss';

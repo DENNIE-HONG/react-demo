@@ -23,4 +23,4 @@ Menu.propTypes = {
 Menu.defaultProps = {
   style: null
 };
-export { Menu };
+export default Menu;
