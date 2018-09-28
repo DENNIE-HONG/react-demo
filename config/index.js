@@ -29,7 +29,8 @@ const AXIOS_DEFAULT_CONFIG = {
   baseURL: '',
   headers: {
     Accept: 'application/json'
-  }
+  },
+  withCredentials: true
 };
 module.exports = {
   WEBPACK_COMMON_CONFIG,

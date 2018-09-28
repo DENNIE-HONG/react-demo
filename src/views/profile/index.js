@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Header from 'coms/layout/header';
-import Footer from 'coms/layout/footer';
 import CommonHead from 'coms/commonHead';
 import userImg from 'assets/img/user.png';
 import isLogin from 'utils/islogin';
@@ -44,7 +43,6 @@ class Profile extends Component {
             </div>
           </header>
         </div>
-        <Footer />
       </div>
     );
   }

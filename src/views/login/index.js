@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Header from 'coms/layout/header';
-import Footer from 'coms/layout/footer';
 import { postLogin } from 'api';
 import isLogin from 'utils/islogin';
 import showMessage from 'coms/message';
@@ -63,7 +62,6 @@ class Login extends Component {
           </label>
           <div className="btn-primary" onClick={this.handleSubmit}>确定</div>
         </form>
-        <Footer />
       </div>
     );
   }

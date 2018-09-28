@@ -25,7 +25,9 @@ module.exports = (env) => {
       stats: {
         colors: true,
         modules: false,
-        chunks: false
+        chunks: false,
+        children: false,
+      chunkModules: false
       },
       watchOptions: {
         ignored: /node_modules/
@@ -40,6 +42,11 @@ module.exports = (env) => {
           target: 'https://www.zhihu.com',
           changeOrigin: true,
           pathRewrite: { '^/zhihu': '' }
+        },
+        '/wy': {
+          target: 'http://localhost:3000',
+          changeOrigin: true,
+          pathRewrite: { '^/wy': '' }
         }
       },
       historyApiFallback: true,

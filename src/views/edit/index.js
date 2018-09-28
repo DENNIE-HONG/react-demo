@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Header from 'coms/layout/header';
-import Footer from 'coms/layout/footer';
 import CommonHead from 'coms/commonHead';
 import Radio from 'coms/radio';
 import RadioGroup from 'coms/radio/radio-group';
@@ -128,7 +127,6 @@ class Edit extends Component {
             </div>)
           }
         </div>
-        <Footer />
       </div>
     );
   }

@@ -1,6 +1,7 @@
 @import './reset.scss';
 /* global */
 body {
+  height: 100%;
   font-size: 12px;
   line-height: 1.75em;
   font-family: Helvetica, Tahoma, Arial, 'PingFang SC', 'Microsoft YaHei',
@@ -100,8 +101,16 @@ input.placeholder {
 }
 /* 锁屏 */
 html {
+  height: 100%;
   &.lock {
-    height: 100%;
     overflow: hidden;
   }
+}
+.page {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+.page .main {
+  flex: 1;
 }

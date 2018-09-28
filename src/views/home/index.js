@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Header from 'coms/layout/header';
-import Footer from 'coms/layout/footer';
 import CommonHead from 'coms/commonHead';
 import UserList from 'coms/userList';
 import isLogin from 'utils/islogin';
 import FeedList from 'coms/feedList';
+import request from '../../plugins/axios';
 import './home.scss';
 class Home extends Component {
   constructor (props) {
@@ -15,6 +15,9 @@ class Home extends Component {
     if (!isLogin()) {
       this.props.history.push('/login', null);
     }
+    request.get('/wy/search/hot').then((res) => {
+      console.log(res);
+    });
   }
   render () {
     return (
@@ -33,6 +36,10 @@ class Home extends Component {
                 <img src="//upload.jianshu.io/collections/images/283250/%E6%BC%AB%E7%94%BB%E4%B8%93%E9%A2%98.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64" />
                 <span>登录页</span>
               </a>
+              <a className="tag" href="/music">
+                <img src="//upload.jianshu.io/collections/images/283250/%E6%BC%AB%E7%94%BB%E4%B8%93%E9%A2%98.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64" />
+                <span>音乐</span>
+              </a>
             </div>
             <FeedList />
           </div>
@@ -40,7 +47,6 @@ class Home extends Component {
             <UserList />
           </div>
         </div>
-        <Footer />
       </div>
     );
   }
