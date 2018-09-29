@@ -13,29 +13,51 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.icon-touzi:before { content: "\e6c1"; }
+.icon-volume:before { content: "\e66a"; }
 
-.icon-piaofang:before { content: "\e600"; }
+.icon-music:before { content: "\e641"; }
 
-.icon-rili:before { content: "\e601"; }
+.icon-github:before { content: "\eaf6"; }
+
+.icon-backoff:before { content: "\e607"; }
+
+.icon-forward:before { content: "\e62c"; }
+
+.icon-cart:before { content: "\e887"; }
 
 .icon-send:before { content: "\e893"; }
 
+.icon-circle:before { content: "\e8b5"; }
+
 .icon-home:before { content: "\e8ba"; }
+
+.icon-ask:before { content: "\e8bb"; }
 
 .icon-chat:before { content: "\e8bd"; }
 
 .icon-message:before { content: "\e8bf"; }
 
-.icon-yonghu-xianxing:before { content: "\e8c8"; }
+.icon-transverse-more:before { content: "\e8c4"; }
+
+.icon-user:before { content: "\e8c8"; }
 
 .icon-write:before { content: "\e8cc"; }
+
+.icon-bianjishuru:before { content: "\e8cd"; }
 
 .icon-picture:before { content: "\e8d2"; }
 
 .icon-lock:before { content: "\e8d5"; }
 
+.icon-left:before { content: "\e8ef"; }
+
 .icon-right:before { content: "\e8f1"; }
+
+.icon-down:before { content: "\e8f4"; }
+
+.icon-up:before { content: "\e8f5"; }
+
+.icon-position:before { content: "\e8ff"; }
 
 .icon-empty:before { content: "\e6f7"; }
 
@@ -45,6 +67,8 @@
 
 .icon-eij:before { content: "\e625"; }
 
+.icon-arrow-right:before { content: "\e629"; }
+
 .icon-success:before { content: "\e844"; }
 
 .icon-close:before { content: "\e845"; }
@@ -53,8 +77,5 @@
 
 .icon-info:before { content: "\e8f3"; }
 
-.icon-github:before { content: "\eaf6"; }
+.icon-video:before { content: "\ec61"; }
 
-.icon-error:before { content: "\e845"; }
-
-.icon-ask:before { content: "\e8bb"; }

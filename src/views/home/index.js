@@ -4,7 +4,6 @@ import CommonHead from 'coms/commonHead';
 import UserList from 'coms/userList';
 import isLogin from 'utils/islogin';
 import FeedList from 'coms/feedList';
-import request from '../../plugins/axios';
 import './home.scss';
 class Home extends Component {
   constructor (props) {
@@ -15,9 +14,6 @@ class Home extends Component {
     if (!isLogin()) {
       this.props.history.push('/login', null);
     }
-    request.get('/wy/search/hot').then((res) => {
-      console.log(res);
-    });
   }
   render () {
     return (

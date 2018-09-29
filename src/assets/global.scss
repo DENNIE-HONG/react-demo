@@ -56,10 +56,6 @@ a:hover {
   text-decoration: none;
   background-color: #db3f2f;
 }
-.content {
-  width: 1200px;
-  margin: 0 auto;
-}
 
 .login_ctn .m_send_code:hover {
   text-decoration: none;
@@ -113,4 +109,12 @@ html {
 }
 .page .main {
   flex: 1;
+  background-color: nth($fgray, 3);
+}
+.container-left {
+  float: left;
+  width: 730px;
+}
+.container-right {
+  float: right;
 }

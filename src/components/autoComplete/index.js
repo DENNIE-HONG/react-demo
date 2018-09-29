@@ -16,7 +16,7 @@ class AutoComplete extends Component {
   }
   static defaultProps = {
     placeholder: ''
-  };
+  }
   constructor (props) {
     super(props);
     this.state = {

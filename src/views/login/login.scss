@@ -5,8 +5,7 @@ form {
 h1 {
   font-size: nth($fz, 4);
 }
-label,
-section {
+label {
   display: block;
   margin-top: 15px;
   font-size: nth($fz, 2);
