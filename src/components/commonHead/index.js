@@ -51,9 +51,11 @@ class CommonHead extends Component {
     return (
       <header className="com-header">
         <div className="com-header-content">
-          <div className="com-header-logo"></div>
+          <h1 className="com-header-logo">React练习</h1>
           <nav>
-            <a href="/" className="com-header-link">首页</a>
+            <h2>
+              <a href="/" className="com-header-link">首页</a>
+            </h2>
           </nav>
           <AutoComplete placeholder="搜索你感兴趣的内容" />
           <div className="com-header-user">

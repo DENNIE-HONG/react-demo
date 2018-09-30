@@ -8,7 +8,8 @@ class Music extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      musicList: []
+      musicList: [],
+      playId: 0
     };
     this.fetch();
   }
@@ -20,6 +21,11 @@ class Music extends Component {
           musicList: res.result.slice(0, 8)
         });
       }
+    });
+  }
+  play (playId) {
+    this.setState({
+      playId
     });
   }
   render () {
@@ -45,7 +51,7 @@ class Music extends Component {
                         <div className="item-info-play">
                           <i className="iconfont icon-music"></i>
                           <span className="item-info-count">{item.playCount > 10000 ? `${Math.round(item.playCount / 10000)}万` : item.playCount}</span>
-                          <i className="iconfont icon-vedio pull-right"></i>
+                          <i className="iconfont icon-video item-info-play-btn pull-right" onClick={this.play.bind(this, item.id)}></i>
                         </div>
                       </div>
                       <h4 className="item-title">{item.name}</h4>
@@ -54,7 +60,7 @@ class Music extends Component {
               </ul>
             </section>
           </div>
-          <Play />
+          <Play playListId={this.state.playId} />
         </main>
       </div>
     );

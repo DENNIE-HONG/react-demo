@@ -1,0 +1,88 @@
+.play {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: green;
+  .content {
+    padding-bottom: 5px;
+  }
+  &-action {
+    display: inline-flex;
+    color: nth($fblack, 3);
+    line-height: 1;
+    align-items: center;
+    cursor: pointer;
+    .iconfont {
+      font-size: 30px;
+      &:hover {
+        color: white;
+      }
+    }
+    &-start {
+      margin-left: 10px;
+      margin-right: 10px;
+      color: white;
+      > .iconfont {
+        font-size: 40px;
+      }
+    }
+  }
+  &-info {
+    display: inline-block;
+    margin-left: 30px;
+    vertical-align: top;
+    &-pic {
+      display: inline-block;
+      width: 36px;
+      height: 36px;
+      vertical-align: top;
+      > img {
+        width: 100%;
+      }
+    }
+    &-box {
+      display: inline-block;
+      margin-left: 10px;
+      color: nth($fblack, 3);
+    }
+    &-time {
+      display: inline-block;
+      margin-left: 10px;
+      vertical-align: bottom;
+      color: nth($fblack, 3);
+      .time-now {
+        color: nth($fgray, 1);
+      }
+    }
+  }
+  &-progress {
+    display: inline-block;
+    width: 500px;
+    height: 8px;
+    margin-top: 3px;
+    border-radius: 4px;
+    background-color: black;
+
+    &-bar {
+      position: relative;
+      width: 20%;
+      height: 100%;
+      background-color: nth($fblue, 1);
+      border-radius: 4px;
+      &::after {
+        position: absolute;
+        left: 100%;
+        top: 0;
+        width: 6px;
+        height: 6px;
+        margin-left: -4px;
+        margin-top: -4px;
+        background-color: nth($fblue, 1);
+        border: 5px solid white;
+        border-radius: 10px;
+        content: '';
+      }
+    }
+  }
+}
