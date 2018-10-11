@@ -54,6 +54,7 @@
       }
       .item-title {
         margin-top: 7px;
+        @include wordbreak;
       }
     }
   }

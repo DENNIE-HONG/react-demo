@@ -1,7 +1,15 @@
+/**
+ * 音乐播放器模块
+ * @param {Number} playListId, 歌单id
+*/
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getMusic, getPlaylistDetail } from 'api/music';
 import './play.scss';
+const READY = 0;
+const PLAYING = 1;
+const PAUSE = 2;
+let index = 0;
 class Play extends Component {
   static propTypes = {
     playListId: PropTypes.number.isRequired
@@ -9,56 +17,137 @@ class Play extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      name: '',
+      name: '暂无歌曲',
       picUrl: '',
-      musicUrl: '',
-      index: 0
+      playlist: null,
+      playState: READY,
+      duration: 0
     };
     this.myRef = React.createRef();
+    this.onPlay = this.onPlay.bind(this);
+    this.pause = this.pause.bind(this);
   }
   // 当数据改变
   componentDidUpdate (prevProps) {
-    prevProps.playListId !== this.props.playListId && this.fetchDetail();
+    if (prevProps.playListId !== this.props.playListId) {
+      this.fetchDetail();
+    }
   }
-  fetchData (id) {
-    getMusic(id).then((res) => {
-      console.log(res);
-      if (res.code === 200 && res.data[0].url) {
-        this.setState({
-          musicUrl: res.data[0].url
-        });
-        const audio = this.myRef.current;
-        audio.src = res.data[0].url;
-        audio.play();
-      }
-    }).catch((err) => {
-      console.log(err);
+  // 播放事件
+  onPlay () {
+    if (!this.state.playlist) {
+      return;
+    }
+    this.myRef.current.play();
+    this.setState({
+      playState: PLAYING
     });
   }
+  /**
+   * 获取音乐
+   * @param {Number}  音乐id
+  */
+  fetchData (id) {
+    try {
+      getMusic(id).then((res) => {
+        if (res.code === 200 && res.data[0].url) {
+          const audio = this.myRef.current;
+          audio.src = res.data[0].url;
+          this.onPlay();
+          audio.addEventListener('ended', () => {
+            this.next();
+          }, false);
+        }
+      }).catch((err) => {
+        console.log(err);
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  // 获取歌单详情
   fetchDetail () {
     getPlaylistDetail(this.props.playListId).then((res) => {
-      console.log(res);
       if (res.code === 200) {
-        const play = res.playlist.tracks[this.state.index];
+        index = 0;
         this.setState({
-          name: play.name,
-          picUrl: play.al.picUrl
+          playlist: res.playlist
         });
-        this.fetchData(play.id);
+        this.updateMusic();
       }
     }).catch((err) => {
       console.log(err);
     });
   }
+  // 更新歌曲数据，歌名、图片等
+  updateMusic () {
+    const play = this.state.playlist.tracks[index];
+    const duration = (play.l.size * 8) / play.l.br;
+    this.setState({
+      name: play.name,
+      picUrl: play.al.picUrl,
+      duration
+    });
+    this.fetchData(play.id);
+  }
+  // 暂停事件
+  pause () {
+    const audio = this.myRef.current;
+    audio.pause();
+    this.setState({
+      playState: PAUSE
+    });
+  }
+  // 下一首
+  next () {
+    if (index === this.state.playlist.trackCount) {
+      return;
+    }
+    index += 1;
+    this.updateMusic();
+  }
+  // 上一首
+  prev () {
+    if (index === 0) {
+      return;
+    }
+    index -= 1;
+    this.updateMusic();
+  }
+  /**
+   * 时间美化
+   * @param {Number}  时间，单位为秒
+   * @return {String} 08:00格式的
+  */
+  timePretty (s) {
+    if (!s) {
+      return '00:00';
+    }
+    let min = Math.trunc(s / 60);
+    let sec = Math.trunc(s % 60);
+    min = min < 10 ? `0${min}` : min;
+    sec = sec < 10 ? `0${sec}` : sec;
+    return `${min}:${sec}`;
+  }
   render () {
-    const { name, picUrl, musicUrl } = this.state;
+    const {
+      name,
+      picUrl,
+      playState,
+      duration
+    } = this.state;
+    const isPlaying = playState === PLAYING;
+    const durationPretty = this.timePretty(duration);
     return (
       <div className="play">
         <div className="content">
           <div className="play-action">
-            <div><i className="iconfont icon-backoff"></i></div>
-            <div className="play-action-start"><i className="iconfont icon-video"></i></div>
-            <div><i className="iconfont icon-forward"></i></div>
+            <div><i className="iconfont icon-backoff" onClick={this.prev.bind(this)}></i></div>
+            <div className="play-action-start">
+              <i className={`iconfont icon-video playing ${isPlaying ? 'hide' : ''}`} onClick={this.onPlay}></i>
+              <i className={`iconfont icon-pause pause ${!isPlaying ? 'hide' : ''}`} onClick={this.pause}></i>
+            </div>
+            <div><i className="iconfont icon-forward" onClick={this.next.bind(this)}></i></div>
           </div>
           <div className="play-info">
             <div className="play-info-pic">
@@ -67,10 +156,13 @@ class Play extends Component {
             <div className="play-info-box">
               <h4>{name}</h4>
               <div className="play-progress">
-                <div className="play-progress-bar"></div>
+                {/* <div className="play-progress-bar"></div> */}
+                <progress value="0" max={duration}></progress>
+                <div className="play-progress-btn"></div>
               </div>
+
               <div className="play-info-time">
-                <span className="time-now">00:00</span> / 06:00
+                <span className="time-now">00:00</span> / {durationPretty}
               </div>
             </div>
           </div>
