@@ -28,6 +28,7 @@ class Edit extends Component {
     this.handleLike = this.handleLike.bind(this);
     this.handleAvatar = this.handleAvatar.bind(this);
   }
+
   componentDidMount () {
     if (!isLogin()) {
       this.props.history.push('/login', null);
