@@ -27,7 +27,7 @@ module.exports = (env) => {
         modules: false,
         chunks: false,
         children: false,
-      chunkModules: false
+        chunkModules: false
       },
       watchOptions: {
         ignored: /node_modules/
@@ -50,7 +50,7 @@ module.exports = (env) => {
         }
       },
       historyApiFallback: true,
-      after: function() {
+      after: function () {
         const { whyDidYouUpdate } = require('why-did-you-update');
         whyDidYouUpdate(React);
       }

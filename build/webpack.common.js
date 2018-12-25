@@ -44,16 +44,17 @@ module.exports = (env) => {
     module: {
       rules: [
         {
-          test: /\.(js|jsx)$/,
+          test: /\.js$/,
           include: WEBPACK_COMMON_CONFIG.sourceCode,
           use: [
-            'babel-loader',
+            'babel-loader?cacheDirectory',
             'eslint-loader'
           ],
-          exclude: /node_modules/
+          exclude: /node_modules/,
         },
         {
-          test: /\.(css|scss)$/,
+          test: /\.scss$/,
+          include: WEBPACK_COMMON_CONFIG.sourceCode,
           use: [
             MiniCssExtractPlugin.loader,
             {
@@ -84,6 +85,7 @@ module.exports = (env) => {
         },
         {
           test: /\.(png|svg|jpg|gif)$/,
+          include: WEBPACK_COMMON_CONFIG.sourceCode,
           use: [
             {
               loader: 'url-loader',
@@ -96,6 +98,7 @@ module.exports = (env) => {
         },
         {
           test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
+          include: path.resolve(__dirname, '../src/assets'),
           use: [
             {
               loader: 'url-loader',
